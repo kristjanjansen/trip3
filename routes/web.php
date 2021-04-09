@@ -14,3 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::inertia('/', 'Index');
+Route::inertia('/example-form', 'ExampleForm');
+Route::post('/store', function() {
+  request()->validate([
+    'email' => ['required', 'min:10', 'email'],
+  ]);
+  sleep(2);
+  return redirect('/example-form');
+});
