@@ -13,9 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$users = [['name' => 'Joe'],['name' =>'Jill']];
-
-$about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet, est sit amet dignissim pellentesque, elit est vulputate felis, a interdum quam nisi a metus.";
-
-Route::inertia('/', 'Users', ['users' => $users]);
-Route::inertia('/about', 'About', ['about' => $about]);
+Route::inertia('/', 'Index');

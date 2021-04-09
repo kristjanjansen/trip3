@@ -16,7 +16,7 @@
     @endproduction
 </head>
 
-<body class="bg-purple-900 text-purple-100">
+<body class="antialiased font-sans text-md text-gray-700 min-h-screen">
     @inertia
 </body>
 
