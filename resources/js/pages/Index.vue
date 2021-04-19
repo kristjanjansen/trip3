@@ -1,22 +1,24 @@
 <template>
     <div>
-        <img
-            class="hover:lighter active:darker w-full max-h-96 object-cover object-center transition-all"
+        <!-- <img
+            class="w-full max-h-96 object-cover object-center"
             src="https://trip.ee/photos/header3.jpg"
-        />
-
-        <div class="grid gap-12 p-6">
-            <div class="h-24" />
-
+        /> -->
+        <div class="h-32" />
+        <div class="lg:container lg:mx-auto space-y-4 p-4">
             <IndexNews />
+
+            <div class="h-16" />
 
             <div class="grid gap-4">
                 <BlockTitle>Tripikad räägivad</BlockTitle>
                 <ForumRow />
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <FlightCard v-for="i in 6" :key="i" />
+            <div class="h-16" />
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <FlightCard v-for="i in 4" :key="i" />
             </div>
         </div>
     </div>

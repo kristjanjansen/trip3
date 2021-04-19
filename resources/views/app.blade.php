@@ -14,6 +14,7 @@
     <script type="module" src="http://localhost:3000/@@vite/client"></script>
     <script type="module" src="http://localhost:3000/resources/js/app.js"></script>
     @endproduction
+    <title>Trip.ee</title>
 </head>
 
 <body class="antialiased font-sans text-md text-gray-700 min-h-screen">
