@@ -4,11 +4,8 @@
             class="w-full max-h-96 object-cover object-center"
             src="https://trip.ee/photos/header3.jpg"
         /> -->
-        <div class="h-32" />
         <div class="lg:container lg:mx-auto space-y-4 p-4">
-            <IndexNews />
-
-            <div class="h-16" />
+            <Logo class="w-[200px]" />
 
             <div class="grid gap-4">
                 <BlockTitle>Tripikad räägivad</BlockTitle>

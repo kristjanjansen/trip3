@@ -10,12 +10,12 @@
             <div class="flex gap-2">
                 <a
                     href=""
-                    class="text-sm justify-self-start px-2 py-1 text-gray-500 hover:bg-gray-100 border border-gray-400 rounded-full"
+                    class="text-sm px-2 py-1 text-gray-500 hover:bg-gray-100 border border-gray-400 rounded-full"
                     >2 comments
                 </a>
                 <a
                     href=""
-                    class="text-sm justify-self-start px-2 py-1 text-orange-500 hover:bg-orange-100 border border-orange-300 rounded-full"
+                    class="text-sm px-2 py-1 text-orange-500 hover:bg-orange-100 border border-orange-300 rounded-full"
                     >Itaalia ja Hispaania
                 </a>
             </div>
