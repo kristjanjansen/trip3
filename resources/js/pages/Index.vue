@@ -80,68 +80,6 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 pt-12 pr-6 pb-24 pl-6">
-            <div
-                class="container lg:mx-auto grid grid-cols-0 md:grid-cols-4 justify-center md:justify-start text-center md:text-left gap-4"
-            >
-                <inertia-link href="">
-                    <logo-plain class="h-[25px] text-gray-600" />
-                    <div class="h-8" />
-                </inertia-link>
-                <div class="grid auto-rows-max gap-5">
-                    <inertia-link
-                        v-for="i in 7"
-                        :key="i"
-                        href=""
-                        class="font-medium text-sm text-gray-600"
-                    >
-                        Link {{ i }}
-                    </inertia-link>
-                </div>
-                <div class="grid auto-rows-max gap-5">
-                    <inertia-link
-                        v-for="i in 3"
-                        :key="i"
-                        href=""
-                        class="font-medium text-sm text-gray-600"
-                    >
-                        Link {{ i }}
-                    </inertia-link>
-                </div>
-                <div class="grid auto-rows-max gap-5">
-                    <inertia-link
-                        v-for="i in 7"
-                        :key="i"
-                        href=""
-                        class="font-medium text-sm text-gray-600"
-                    >
-                        Link {{ i }}
-                    </inertia-link>
-                </div>
-            </div>
-            <div class="h-16" />
-            <div
-                class="flex flex-col md:flex-row gap-4 justify-center items-center"
-            >
-                <inertia-link
-                    v-for="link in [
-                        'Facebook',
-                        'Twitter',
-                        'Lennupakkumiste RSS',
-                        'Uudiste RSS',
-                    ]"
-                    :key="link"
-                    href=""
-                    class="flex items-center gap-2 text-sm text-gray-600"
-                >
-                    <icon-rss class="hidden md:block w-4 h-4 text-gray-600" />
-                    <div class="text-sm">{{ link }}</div>
-                </inertia-link>
-            </div>
-            <div class="h-12" />
-            <div class="text-sm text-gray-400 text-center">
-                Autoriõigused © Trip.ee 1998-2021
-            </div>
-        </div>
+        <Footer />
     </div>
 </template>
