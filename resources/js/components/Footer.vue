@@ -3,40 +3,40 @@ import { usePage } from "@inertiajs/inertia-vue3";
 const { config } = usePage().props.value;
 </script>
 <template>
-    <div class="bg-gray-100 pt-12 pr-6 pb-24 pl-6">
+    <div class="pt-12 pb-24 pl-6 pr-6 bg-gray-100">
         <div
-            class="container lg:mx-auto grid grid-cols-0 md:grid-cols-4 justify-center md:justify-start text-center md:text-left gap-4"
+            class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
             <inertia-link href="">
                 <logo-plain class="h-[25px] text-gray-600" />
-                <div class="h-8 hidden" />
+                <div class="hidden h-8" />
             </inertia-link>
-            <div class="grid auto-rows-max gap-6">
+            <div class="grid gap-6 auto-rows-max">
                 <inertia-link
                     v-for="link in config.links.footerFirst"
                     :key="link"
                     href=""
-                    class="font-medium text-base text-gray-600"
+                    class="text-base font-medium text-gray-600"
                 >
                     {{ link }}
                 </inertia-link>
             </div>
-            <div class="grid auto-rows-max gap-6">
+            <div class="grid gap-6 auto-rows-max">
                 <inertia-link
                     v-for="link in config.links.footerSecond"
                     :key="link"
                     href=""
-                    class="font-medium text-base text-gray-600"
+                    class="text-base font-medium text-gray-600"
                 >
                     {{ link }}
                 </inertia-link>
             </div>
-            <div class="grid auto-rows-max gap-6">
+            <div class="grid gap-6 auto-rows-max">
                 <inertia-link
                     v-for="link in config.links.footerThird"
                     :key="link"
                     href=""
-                    class="font-medium text-base text-gray-600"
+                    class="text-base font-medium text-gray-600"
                 >
                     {{ link }}
                 </inertia-link>
@@ -44,7 +44,7 @@ const { config } = usePage().props.value;
         </div>
         <div class="h-16" />
         <div
-            class="flex flex-col md:flex-row gap-6 justify-center items-center"
+            class="flex flex-col items-center justify-center gap-6 md:flex-row"
         >
             <inertia-link
                 v-for="link in config.links.footerSocial"
@@ -52,12 +52,12 @@ const { config } = usePage().props.value;
                 href=""
                 class="flex items-center gap-2 text-sm text-gray-600"
             >
-                <icon-rss class="hidden md:block w-4 h-4 text-gray-600" />
+                <icon-rss class="hidden w-4 h-4 text-gray-600 md:block" />
                 <div class="text-base font-medium">{{ link }}</div>
             </inertia-link>
         </div>
         <div class="h-12" />
-        <div class="text-base text-gray-400 text-center">
+        <div class="text-base text-center text-gray-400">
             Autoriõigused © Trip.ee 1998-2021
         </div>
     </div>
