@@ -121,5 +121,6 @@ module.exports = {
     plugins: [
         require("@themosaad/tailwindcss-capsize"),
         require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
     ],
 };

@@ -15,11 +15,13 @@
                 <icon-thumbsdown class="w-5 h-5 text-red-500" />
             </div>
         </div>
-        <div>
-            Reisi targalt lehel on üleval info, et alates 30.03 on Eestist
-            reisijatel vajalik esitada corona test ka juhul, kui läbitakse
-            Saksamaa transiidina ja vahemaandumisel transiiditsoonist ei
-            väljuta.
+        <div class="prose prose-blue max-w-none">
+            <p>
+                Reisi targalt lehel on üleval info, et alates 30.03 on Eestist
+                reisijatel <a href="">vajalik esitada</a> corona test ka juhul
+                kui läbitakse Saksamaa transiidina ja vahemaandumisel
+                transiiditsoonist ei väljuta.
+            </p>
         </div>
     </div>
 </template>

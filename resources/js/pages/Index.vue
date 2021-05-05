@@ -6,7 +6,7 @@
             <background-map
                 class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
             />
-            <div class="inset-0 lg:container lg:mx-auto grid gap-6">
+            <div class="inset-0 container lg:mx-auto grid gap-6">
                 <Nav />
                 <div class="h-6" />
                 <h1
@@ -52,22 +52,21 @@
                         <Tag>Moskva</Tag>
                         <Tag>Venemaa</Tag>
                     </div>
-                    <div class="text-lg">
-                        <div>
+                    <div class="prose lg:prose-lg max-w-none prose-blue">
+                        <p>
                             Reisi targalt lehel on üleval info, et alates 30.03
                             on Eestist reisijatel vajalik esitada corona test ka
                             juhul, kui läbitakse Saksamaa transiidina ja
                             vahemaandumisel transiiditsoonist ei väljuta.
-                        </div>
-                        <div class="h-2" />
-                        <div>
+                        </p>
+                        <p>
                             Samas on Lufthansa lehel info, et transiidi puhul on
-                            vajalik test vaid neile, kes tulevad viiruse
-                            mutatsiooniga piirkondadest. Eesti kuulub aga kõrge
-                            riskiga piirkonna, mitte mutatsiooniohuga piirkonna
-                            alla. Oskab keegi kommenteerida, kummat infot
-                            usaldada?
-                        </div>
+                            vajalik test <a href="">vajalik esitada</a> vaid
+                            neile, kes tulevad viiruse mutatsiooniga
+                            piirkondadest. Eesti kuulub aga kõrge riskiga
+                            piirkonna, mitte mutatsiooniohuga piirkonna alla.
+                            Oskab keegi kommenteerida, kummat infot usaldada?
+                        </p>
                     </div>
                 </div>
             </div>
@@ -79,6 +78,64 @@
                 <div class="grid gap-4">
                     <comment v-for="i in 10" :key="i" />
                 </div>
+            </div>
+        </div>
+        <div class="bg-gray-100 pt-12 pb-24">
+            <div class="container lg:mx-auto grid grid-cols-4">
+                <inertia-link href="">
+                    <logo-plain class="h-[25px] text-gray-600" />
+                </inertia-link>
+                <div class="grid auto-rows-max gap-5">
+                    <inertia-link
+                        v-for="i in 7"
+                        :key="i"
+                        href=""
+                        class="font-medium text-sm text-gray-600"
+                    >
+                        Link {{ i }}
+                    </inertia-link>
+                </div>
+                <div class="grid auto-rows-max gap-5">
+                    <inertia-link
+                        v-for="i in 3"
+                        :key="i"
+                        href=""
+                        class="font-medium text-sm text-gray-600"
+                    >
+                        Link {{ i }}
+                    </inertia-link>
+                </div>
+                <div class="grid auto-rows-max gap-5">
+                    <inertia-link
+                        v-for="i in 7"
+                        :key="i"
+                        href=""
+                        class="font-medium text-sm text-gray-600"
+                    >
+                        Link {{ i }}
+                    </inertia-link>
+                </div>
+            </div>
+            <div class="h-16" />
+            <div class="flex gap-6 justify-center">
+                <inertia-link
+                    v-for="link in [
+                        'Facebook',
+                        'Twitter',
+                        'Lennupakkumiste RSS',
+                        'Uudiste RSS',
+                    ]"
+                    :key="link"
+                    href=""
+                    class="flex gap-2 items-center text-sm text-gray-600"
+                >
+                    <icon-rss class="w-4 h-4 text-gray-600" />
+                    <div class="text-sm">{{ link }}</div>
+                </inertia-link>
+            </div>
+            <div class="h-4" />
+            <div class="text-sm text-gray-400">
+                Autoriõigused © Trip.ee 1998-2021
             </div>
         </div>
     </div>

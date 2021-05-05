@@ -17,7 +17,7 @@
     <title>Trip.ee</title>
 </head>
 
-<body class="antialiased font-sans text-md text-gray-700 min-h-screen">
+<body class="antialiased font-sans text-gray-700 min-h-screen">
     @inertia
 </body>
 
