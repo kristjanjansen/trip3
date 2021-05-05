@@ -45,3 +45,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.debug {
+    border: 1px solid pink;
+}
+.debug > * {
+    border: 1px solid red;
+}
+.debug2 {
+    border: 1px solid cyan;
+}
+.debug2 > * {
+    border: 1px solid steelblue;
+}
