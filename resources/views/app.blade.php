@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="{{ $meta['key'] }}" content="{{ $meta['value'] }}">
     @production
     @php
     $manifest = json_decode(file_get_contents(public_path('dist/manifest.json')), true);
@@ -17,7 +18,7 @@
     <title>Trip.ee</title>
 </head>
 
-<body class="antialiased font-sans text-gray-700 min-h-screen">
+<body class="min-h-screen font-sans antialiased text-gray-700">
     @inertia
 </body>
 
