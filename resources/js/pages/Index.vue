@@ -32,14 +32,14 @@
                 </div>
             </div>
         </div>
-        <div class="lg:container lg:mx-auto p-6 pt-12">
+        <div class="lg:container lg:mx-auto p-6 pt-12 bg-gray-50">
             <!-- <div class="grid gap-8 py-8">
                 <ForumRow />
                 <BlockTitle>Tripikad räägivad</BlockTitle>
             </div> -->
-            <div class="grid grid-cols-[auto,1fr] gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-5">
                 <icon-user
-                    class="w-10 lg:w-16 text-gray-200 rounded-full border-4 border-cyan-500"
+                    class="w-12 md:w-16 text-gray-200 rounded-full border-4 border-cyan-500"
                 />
                 <div class="grid gap-6">
                     <h1
@@ -48,6 +48,10 @@
                         Aeroflot sulgeb (nädal tagasi taasavatud) liini
                         Tallinn-Moskva vahel
                     </h1>
+                    <div class="flex gap-2">
+                        <Tag>Moskva</Tag>
+                        <Tag>Venemaa</Tag>
+                    </div>
                     <div class="text-lg">
                         <div>
                             Reisi targalt lehel on üleval info, et alates 30.03
@@ -65,6 +69,15 @@
                             usaldada?
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="h-12" />
+
+            <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-5">
+                <div class="w-0 md:w-16" />
+                <div class="grid gap-4">
+                    <comment v-for="i in 10" :key="i" />
                 </div>
             </div>
         </div>
