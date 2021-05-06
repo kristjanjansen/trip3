@@ -1,23 +1,23 @@
+<script setup lang="ts">
+import { defineProps } from "vue";
+import type { Content } from "../types";
+defineProps<{ content: Content }>();
+</script>
+
 <template>
-    <div class="flex gap-3 items-center">
-        <a href="" class="w-14 text-gray-200 hover:text-gray-300">
+    <div class="flex items-center gap-3">
+        <a href="" class="text-gray-200 w-14 hover:text-gray-300">
             <icon-user />
         </a>
         <div class="grid gap-3">
-            <a href="" class="text-xl hover:text-gray-800 font-medium">
-                <h3>Kas praegu saab Sardiiniasse reisida?</h3>
-            </a>
+            <inertia-link
+                :href="route('forum.show', content.id)"
+                class="text-xl font-medium hover:text-gray-800"
+            >
+                <h3>{{ content.title }}</h3>
+            </inertia-link>
             <div class="flex gap-2">
-                <a
-                    href=""
-                    class="text-sm justify-self-start px-2 py-1 text-gray-500 hover:bg-gray-100 border border-gray-400 rounded-full"
-                    >2 comments
-                </a>
-                <a
-                    href=""
-                    class="text-sm justify-self-start px-2 py-1 text-orange-500 hover:bg-orange-100 border border-orange-300 rounded-full"
-                    >Itaalia ja Hispaania
-                </a>
+                <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ForumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::inertia('/', 'Index');
-Route::inertia('/example-form', 'ExampleForm');
-Route::post('/store', function() {
-  request()->validate([
-    'email' => ['required', 'min:10', 'email'],
-  ]);
-  sleep(2);
-  return redirect('/example-form');
-});
+Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
+Route::get("/", [ForumController::class, "index"])->name("forum.index");
+
+//Route::inertia("/", "Index");
