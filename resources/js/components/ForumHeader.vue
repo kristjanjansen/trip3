@@ -16,7 +16,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             <h1
                 class="text-4xl font-bold tracking-tight text-gray-500 lg:text-5xl"
             >
-                Foorum
+                {{ __("Forum") }}
             </h1>
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <inertia-link

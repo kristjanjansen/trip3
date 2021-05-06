@@ -12,7 +12,7 @@ const { content } = usePage<{ content: Content }>().props.value;
             <div class="h-12" />
             <ForumPost :content="content" />
             <div class="h-12" />
-            <Comments :comments="content.comments" />
+            <Comments v-if="content.comments" :comments="content.comments" />
         </div>
         <Footer />
     </div>
