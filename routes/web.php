@@ -13,6 +13,7 @@ use App\Http\Controllers\ForumController;
 |
 */
 
-Route::get("/", [ForumController::class, "index"])->name("index");
+Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
+Route::get("/", [ForumController::class, "index"])->name("forum.index");
 
 //Route::inertia("/", "Index");

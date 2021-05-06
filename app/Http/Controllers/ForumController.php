@@ -13,10 +13,10 @@ class ForumController extends Controller
         ]);
     }
 
-    public function show(int $index)
+    public function show($index)
     {
         return inertia("ForumShow", [
-            "contents" => config("data.forums")[$index],
+            "content" => config("data.forums")[$index],
         ])->withViewData([
             "meta" => ["key" => "test-key", "value" => "test-value"],
         ]);

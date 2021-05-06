@@ -1,10 +1,12 @@
-import type { Page, PageProps as InertiaPageProps } from "@inertiajs/inertia";
+import router from "ziggy-js";
 
 export type User = {
+    id: number;
     name: string;
 };
 
 export type Comment = {
+    id: number;
     title: string;
     user: User;
     date: string;
@@ -12,6 +14,7 @@ export type Comment = {
 };
 
 export type Content = {
+    id: number;
     title: string;
     user: User;
     date: string;
@@ -23,3 +26,9 @@ export type Content = {
 export type Shared = {
     links: any;
 };
+
+declare module "@vue/runtime-core" {
+    export interface ComponentCustomProperties {
+        route: typeof router;
+    }
+}

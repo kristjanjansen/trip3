@@ -10,9 +10,12 @@ defineProps<{ content: Content }>();
             <icon-user />
         </a>
         <div class="grid gap-3">
-            <a href="" class="text-xl font-medium hover:text-gray-800">
+            <inertia-link
+                :href="route('forum.show', content.id)"
+                class="text-xl font-medium hover:text-gray-800"
+            >
                 <h3>{{ content.title }}</h3>
-            </a>
+            </inertia-link>
             <div class="flex gap-2">
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
             </div>

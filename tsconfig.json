@@ -11,11 +11,12 @@
         "allowJs": true,
         "checkJs": true,
         "lib": ["esnext", "dom"],
-        "types": ["vite/client"]
+        "types": ["vite/client", "ziggy-js"]
     },
     "include": [
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.vue",
+        "resources/js/app.js"
     ]
 }
