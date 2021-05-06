@@ -4,6 +4,7 @@ import { createApp, h, defineAsyncComponent } from "vue";
 import { App, plugin } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
 import "../css/app.css";
+import { __ } from "./utils";
 
 const components = import.meta.glob("./components/**/*.vue");
 
@@ -29,14 +30,8 @@ Object.entries(components).forEach(([path, component]) => {
 });
 
 app.use(plugin);
+
 app.config.globalProperties.route = route;
-// app.use({
-//     install: (v, options) =>
-//         v.mixin({
-//             methods: {
-//                 route: (name, params, absolute, config = options) =>
-//                     route(name, params, absolute, config),
-//             },
-//         }),
-// });
+app.config.globalProperties.__ = __;
+
 app.mount(el);

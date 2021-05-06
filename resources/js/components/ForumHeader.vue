@@ -11,12 +11,14 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
         />
         <div class="container inset-0 grid gap-6 lg:mx-auto">
-            <Nav />
+            <div class="h-6">
+                <transition name="fade"><Nav /></transition>
+            </div>
             <div class="h-6" />
             <h1
-                class="text-4xl font-bold tracking-tight text-gray-500 lg:text-5xl"
+                class="text-4xl font-bold tracking-tight text-gray-300 lg:text-5xl"
             >
-                Foorum
+                {{ __("Forum") }}
             </h1>
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <inertia-link

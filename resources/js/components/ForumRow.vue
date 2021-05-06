@@ -5,19 +5,24 @@ defineProps<{ content: Content }>();
 </script>
 
 <template>
-    <div class="flex items-center gap-3">
-        <a href="" class="text-gray-200 w-14 hover:text-gray-300">
+    <div class="flex items-center gap-6">
+        <div class="text-gray-200 transform -translate-y-0.5 w-14 h-14">
             <icon-user />
-        </a>
+        </div>
         <div class="grid gap-3">
             <inertia-link
                 :href="route('forum.show', content.id)"
-                class="text-xl font-medium hover:text-gray-800"
+                class="text-xl font-bold text-gray-700"
             >
                 <h3>{{ content.title }}</h3>
             </inertia-link>
-            <div class="flex gap-2">
+            <div class="flex items-center h-6 gap-3">
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
+                <div class="text-base text-gray-500">
+                    {{ __("Postitas") }} {{ content.user.name }} 1. mai 2021
+                </div>
+                <div class="text-base text-gray-500">23 kommentaari</div>
+                <div class="text-base text-gray-500">23 lugemist</div>
             </div>
         </div>
     </div>

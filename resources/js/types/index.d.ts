@@ -1,4 +1,5 @@
 import router from "ziggy-js";
+import { __ } from "../utils";
 
 export type User = {
     id: number;
@@ -25,10 +26,12 @@ export type Content = {
 
 export type Shared = {
     links: any;
+    translations: any;
 };
 
 declare module "@vue/runtime-core" {
     export interface ComponentCustomProperties {
         route: typeof router;
+        __: typeof __;
     }
 }

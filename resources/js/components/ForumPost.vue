@@ -5,15 +5,15 @@ defineProps<{ content: Content }>();
 </script>
 
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-5">
-        <icon-user
-            class="w-12 text-gray-200 border-4 rounded-full md:w-16 border-cyan-500"
-        />
-        <div class="grid gap-6">
-            <h1 class="text-3xl font-bold tracking-tight text-color-600">
+    <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8">
+        <div class="text-gray-200 transform -translate-y-2 w-14 h-14">
+            <icon-user />
+        </div>
+        <div class="grid gap-4">
+            <h1 class="text-3xl font-bold tracking-tight text-color-500">
                 {{ content.title }}
             </h1>
-            <div class="flex gap-2">
+            <div v-if="content.tags" class="flex h-6 gap-2">
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
             </div>
             <div

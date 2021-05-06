@@ -7,6 +7,7 @@
         url("/fonts/Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -18,6 +19,7 @@
         url("/fonts/Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -29,6 +31,7 @@
         url("/fonts/RegularItalic.ttf") format("truetype");
     font-weight: bold;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -40,21 +43,26 @@
         url("/fonts/Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.fade-enter-active,
+.fade-leave-active {
+    @apply transition-opacity duration-200;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    @apply opacity-0;
+}
+
 .debug {
-    border: 1px solid pink;
+    @apply border border-red-300;
 }
 .debug > * {
-    border: 1px solid red;
-}
-.debug2 {
-    border: 1px solid cyan;
-}
-.debug2 > * {
-    border: 1px solid steelblue;
+    @apply border border-red-500;
 }

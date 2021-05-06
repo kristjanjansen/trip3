@@ -10,7 +10,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
             <inertia-link :href="route(shared.links.index.route)">
-                <logo-plain class="h-[25px] text-gray-600" />
+                <div class="h-6 text-gray-600"><logo-plain class="h-6" /></div>
                 <div class="hidden h-8" />
             </inertia-link>
             <div class="grid gap-6 auto-rows-max">
@@ -20,7 +20,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link.title }}
+                    {{ __(link.title) }}
                 </inertia-link>
             </div>
             <div class="grid gap-6 auto-rows-max">
@@ -30,7 +30,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link.title }}
+                    {{ __(link.title) }}
                 </inertia-link>
             </div>
             <div class="grid gap-6 auto-rows-max">
@@ -40,7 +40,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link.title }}
+                    {{ __(link.title) }}
                 </inertia-link>
             </div>
         </div>
@@ -55,12 +55,14 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
                 class="flex items-center gap-2 text-sm text-gray-600"
             >
                 <icon-rss class="hidden w-4 h-4 text-gray-600 md:block" />
-                <div class="text-base font-medium">{{ link.title }}</div>
+                <div class="text-base font-medium">{{ __(link.title) }}</div>
             </inertia-link>
         </div>
         <div class="h-12" />
         <div class="text-base text-center text-gray-400">
-            Autoriõigused © Trip.ee 1998-2021
+            {{ __("Copyright") }} © {{ shared.links.index.title }} 1998-{{
+                new Date().getFullYear()
+            }}
         </div>
     </div>
 </template>
