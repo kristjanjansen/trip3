@@ -1,6 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-const { config } = usePage().props.value;
+import type { Shared } from "../types";
+
+const { shared } = usePage<{ shared: Shared }>().props.value;
 </script>
 <template>
     <div class="pt-12 pb-24 pl-6 pr-6 bg-gray-100">
@@ -13,7 +15,7 @@ const { config } = usePage().props.value;
             </inertia-link>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in config.links.footerFirst"
+                    v-for="link in shared.links.footerFirst"
                     :key="link"
                     href=""
                     class="text-base font-medium text-gray-600"
@@ -23,7 +25,7 @@ const { config } = usePage().props.value;
             </div>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in config.links.footerSecond"
+                    v-for="link in shared.links.footerSecond"
                     :key="link"
                     href=""
                     class="text-base font-medium text-gray-600"
@@ -33,7 +35,7 @@ const { config } = usePage().props.value;
             </div>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in config.links.footerThird"
+                    v-for="link in shared.links.footerThird"
                     :key="link"
                     href=""
                     class="text-base font-medium text-gray-600"
@@ -47,7 +49,7 @@ const { config } = usePage().props.value;
             class="flex flex-col items-center justify-center gap-6 md:flex-row"
         >
             <inertia-link
-                v-for="link in config.links.footerSocial"
+                v-for="link in shared.links.footerSocial"
                 :key="link"
                 href=""
                 class="flex items-center gap-2 text-sm text-gray-600"
