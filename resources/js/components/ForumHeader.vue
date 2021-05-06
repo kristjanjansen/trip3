@@ -16,7 +16,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             </div>
             <div class="h-6" />
             <h1
-                class="text-4xl font-bold tracking-tight text-gray-500 lg:text-5xl"
+                class="text-4xl font-bold tracking-tight text-gray-300 lg:text-5xl"
             >
                 {{ __("Forum") }}
             </h1>
