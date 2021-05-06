@@ -10,7 +10,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
             <inertia-link :href="route(shared.links.index.route)">
-                <logo-plain class="h-[25px] text-gray-600" />
+                <div class="h-6 text-gray-600"><logo-plain class="h-6" /></div>
                 <div class="hidden h-8" />
             </inertia-link>
             <div class="grid gap-6 auto-rows-max">
