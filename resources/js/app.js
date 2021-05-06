@@ -29,13 +29,14 @@ Object.entries(components).forEach(([path, component]) => {
 });
 
 app.use(plugin);
-app.use({
-    install: (v, options) =>
-        v.mixin({
-            methods: {
-                route: (name, params, absolute, config = options) =>
-                    route(name, params, absolute, config),
-            },
-        }),
-});
+app.config.globalProperties.route = route;
+// app.use({
+//     install: (v, options) =>
+//         v.mixin({
+//             methods: {
+//                 route: (name, params, absolute, config = options) =>
+//                     route(name, params, absolute, config),
+//             },
+//         }),
+// });
 app.mount(el);

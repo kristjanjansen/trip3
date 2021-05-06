@@ -21,12 +21,12 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <inertia-link
                     v-for="(link, i) in shared.links.footerSecond"
-                    :key="link"
+                    :key="i"
                     class="px-5 py-3 font-bold text-gray-500 whitespace-nowrap text-md"
                     :class="{ 'bg-white text-gray-800': i === 0 }"
-                    href=""
+                    :href="route(link.route)"
                 >
-                    {{ link }}
+                    {{ link.title }}
                 </inertia-link>
             </div>
         </div>

@@ -9,38 +9,38 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
         <div
             class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
-            <inertia-link href="">
+            <inertia-link :href="route(shared.links.index.route)">
                 <logo-plain class="h-[25px] text-gray-600" />
                 <div class="hidden h-8" />
             </inertia-link>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in shared.links.footerFirst"
-                    :key="link"
-                    href=""
+                    v-for="(link, i) in shared.links.footerFirst"
+                    :key="i"
+                    :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link }}
+                    {{ link.title }}
                 </inertia-link>
             </div>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in shared.links.footerSecond"
-                    :key="link"
-                    href=""
+                    v-for="(link, i) in shared.links.footerSecond"
+                    :key="i"
+                    :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link }}
+                    {{ link.title }}
                 </inertia-link>
             </div>
             <div class="grid gap-6 auto-rows-max">
                 <inertia-link
-                    v-for="link in shared.links.footerThird"
-                    :key="link"
-                    href=""
+                    v-for="(link, i) in shared.links.footerThird"
+                    :key="i"
+                    :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
-                    {{ link }}
+                    {{ link.title }}
                 </inertia-link>
             </div>
         </div>
@@ -49,13 +49,13 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
             class="flex flex-col items-center justify-center gap-6 md:flex-row"
         >
             <inertia-link
-                v-for="link in shared.links.footerSocial"
-                :key="link"
-                href=""
+                v-for="(link, i) in shared.links.footerSocial"
+                :key="i"
+                :href="route(link.route)"
                 class="flex items-center gap-2 text-sm text-gray-600"
             >
                 <icon-rss class="hidden w-4 h-4 text-gray-600 md:block" />
-                <div class="text-base font-medium">{{ link }}</div>
+                <div class="text-base font-medium">{{ link.title }}</div>
             </inertia-link>
         </div>
         <div class="h-12" />
