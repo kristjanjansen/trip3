@@ -6,7 +6,7 @@ defineProps<{ content: Content }>();
 
 <template>
     <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-5">
-        <div class="w-12 h-12 text-gray-200 bg-gray-200"><icon-user /></div>
+        <div class="w-12 h-12 text-gray-200"><icon-user /></div>
         <div class="grid gap-6">
             <h1 class="text-3xl font-bold tracking-tight text-color-600">
                 {{ content.title }}

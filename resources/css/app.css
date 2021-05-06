@@ -46,15 +46,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.fade-enter-active,
+.fade-leave-active {
+    @apply transition-opacity duration-200;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    @apply opacity-0;
+}
+
 .debug {
-    border: 1px solid pink;
+    @apply border border-red-300;
 }
 .debug > * {
-    border: 1px solid red;
-}
-.debug2 {
-    border: 1px solid cyan;
-}
-.debug2 > * {
-    border: 1px solid steelblue;
+    @apply border border-red-500;
 }
