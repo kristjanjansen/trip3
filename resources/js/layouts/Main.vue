@@ -12,5 +12,5 @@ whenever(keys.shift_g, () => {
 
 <template>
     <slot />
-    <background-grid v-if="showGrid" />
+    <BackgroundGrid v-if="showGrid" />
 </template>

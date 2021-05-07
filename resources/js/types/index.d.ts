@@ -1,5 +1,6 @@
 import router from "ziggy-js";
 import { __ } from "../utils";
+import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 export type User = {
     id: number;
@@ -29,7 +30,13 @@ export type Shared = {
     translations: any;
 };
 
-declare module "@vue/runtime-core" {
+declare module "vue" {
+    // @TODO Add async components
+    // https://github.com/vuejs/vue-next/pull/3399
+    // https://github.com/johnsoncodehk/volar#using
+    export interface GlobalComponents {
+        InertiaLink: InertiaLink;
+    }
     export interface ComponentCustomProperties {
         route: typeof router;
         __: typeof __;
