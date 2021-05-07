@@ -6,10 +6,10 @@ class CommentController extends Controller
 {
     public function store()
     {
+        //dd(request()->all());
         request()->validate([
-            "body" => ["required", "min:3"],
+            "body" => ["required"],
         ]);
-        sleep(2);
-        return redirect()->route("forum.index");
+        return redirect()->route("forum.show", [2]);
     }
 }

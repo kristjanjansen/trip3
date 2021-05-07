@@ -20,6 +20,4 @@ Route::post("/comment", [CommentController::class, "store"])->name(
     "comment.store"
 );
 
-Route::get("/", [CommentController::class, "index"])->name("forum.index");
-
-//Route::inertia("/", "Index");
+Route::get("/", [ForumController::class, "index"])->name("forum.index");

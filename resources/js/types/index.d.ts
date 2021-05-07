@@ -1,6 +1,7 @@
 import router from "ziggy-js";
 import { __ } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
+import { PageProps as InertiaPageProps } from "@inertiajs/inertia";
 
 export type User = {
     id: number;
@@ -41,4 +42,8 @@ declare module "vue" {
         route: typeof router;
         __: typeof __;
     }
+}
+
+export interface PageProps extends InertiaPageProps {
+    errors?: object;
 }
