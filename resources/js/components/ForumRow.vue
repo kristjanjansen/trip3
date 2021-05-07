@@ -19,7 +19,11 @@ defineProps<{ content: Content }>();
             <div class="flex items-center h-6 gap-3">
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
                 <div class="text-base text-gray-500">
-                    {{ __("Postitas") }} {{ content.user.name }} 1. mai 2021
+                    {{ __("Postitas") }}
+                    <span class="font-medium text-cyan-500">{{
+                        content.user.name
+                    }}</span>
+                    1. mai 2021
                 </div>
                 <div class="text-base text-gray-500">23 kommentaari</div>
                 <div class="text-base text-gray-500">23 lugemist</div>

@@ -9,16 +9,17 @@ class ForumController extends Controller
         return inertia("ForumIndex", [
             "contents" => config("data.forums"),
         ])->withViewData([
-            "meta" => ["key" => "test-key", "value" => "test-value"],
+            "title" => __("Forum"),
         ]);
     }
 
     public function show($index)
     {
+        $content = config("data.forums")[$index - 1];
         return inertia("ForumShow", [
-            "content" => config("data.forums")[$index - 1],
+            "content" => $content,
         ])->withViewData([
-            "meta" => ["key" => "test-key", "value" => "test-value"],
+            "title" => $content["title"],
         ]);
     }
 }
