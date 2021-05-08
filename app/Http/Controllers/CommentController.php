@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store()
+    public function store(Request $request)
     {
-        //dd(request()->all());
-        request()->validate([
-            "body" => ["required"],
+        Log::error(request()->all());
+        $request->validate([
+            "body" => "required|min:5",
         ]);
-        return redirect()->route("forum.show", [2]);
+        return redirect()->back();
     }
 }
