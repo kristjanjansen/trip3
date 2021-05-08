@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,8 @@ use App\Http\Controllers\ForumController;
 */
 
 Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
-Route::get("/", [ForumController::class, "index"])->name("forum.index");
+Route::post("/comment", [CommentController::class, "store"])->name(
+    "comment.store"
+);
 
-//Route::inertia("/", "Index");
+Route::get("/", [ForumController::class, "index"])->name("forum.index");
