@@ -2,7 +2,7 @@
 import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
 
-const p = usePage<{ errors: object }>().props.value;
+const p = usePage<{ errors: object }>().props;
 const form = useForm({
     body: "",
 });
@@ -13,7 +13,7 @@ const onSubmit = () => {
 <template>
     <form @submit.prevent="onSubmit">
         <FormTextarea name="body" v-model="form.body" />
+        {{ form.errors.body }}
         <Button type="submit" :disabled="form.processing">Sign in</Button>
-        {{ p }}
     </form>
 </template>
