@@ -6,7 +6,10 @@ defineProps<{ content: Content }>();
 
 <template>
     <div class="flex items-center gap-6">
-        <div class="text-gray-200 transform -translate-y-0.5 w-14 h-14">
+        <!-- {{ content }} -->
+        <div
+            class="text-gray-200 transform -translate-y-0.5 w-14 h-14 rounded-full overflow-hidden"
+        >
             <icon-user />
         </div>
         <div class="grid gap-3">
@@ -20,9 +23,9 @@ defineProps<{ content: Content }>();
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
                 <div class="text-base text-gray-500">
                     {{ __("Postitas") }}
-                    <span class="font-medium text-cyan-500">{{
-                        content.user.name
-                    }}</span>
+                    <span class="font-medium text-cyan-500">
+                        {{ content.user.name }}
+                    </span>
                     1. mai 2021
                 </div>
                 <div class="text-base text-gray-500">23 kommentaari</div>

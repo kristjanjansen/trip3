@@ -13,7 +13,6 @@ const text = ref("bla");
         <div class="p-6 pt-12 lg:container lg:mx-auto bg-gray-50">
             <div class="h-12" />
             <ForumPost :content="content" />
-            <comment-create-form />
             <div class="h-12" />
             <Comments v-if="content.comments" :comments="content.comments" />
         </div>
