@@ -25,10 +25,13 @@ class CommentFactory extends Factory
     {
         $user = User::factory()->create();
         $content = Content::factory()->create();
+        $date = $this->faker->dateTimeThisMonth();
         return [
             "user_id" => $user,
             "content_id" => $content,
             "body" => $this->faker->paragraph(),
+            "created_at" => $date,
+            "updated_at" => $date,
         ];
     }
 }

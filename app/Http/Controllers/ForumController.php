@@ -16,7 +16,11 @@ class ForumController extends Controller
 
     public function show($index)
     {
-        $content = Content::with(["user", "comments"])->findOrFail($index);
+        $content = Content::with([
+            "user",
+            "comments",
+            "comments.user",
+        ])->findOrFail($index);
         return inertia("ForumShow", [
             "content" => $content,
         ])->withViewData([

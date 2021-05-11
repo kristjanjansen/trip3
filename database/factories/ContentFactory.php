@@ -23,6 +23,7 @@ class ContentFactory extends Factory
     public function definition()
     {
         $user = User::factory()->create();
+        $date = $this->faker->dateTimeThisMonth();
         $type = $this->faker->randomElement([
             "general",
             "buysell",
@@ -34,6 +35,8 @@ class ContentFactory extends Factory
             "user_id" => $user,
             "body" => $this->faker->paragraphs(2, true),
             "type" => $type,
+            "created_at" => $date,
+            "updated_at" => $date,
         ];
     }
 }

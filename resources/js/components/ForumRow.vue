@@ -26,10 +26,11 @@ defineProps<{ content: Content }>();
                     <span class="font-medium text-cyan-500">
                         {{ content.user.name }}
                     </span>
-                    1. mai 2021
+                    {{ content.created_at }}
                 </div>
-                <div class="text-base text-gray-500">23 kommentaari</div>
-                <div class="text-base text-gray-500">23 lugemist</div>
+                <div class="text-base text-gray-500">
+                    {{ content.comments?.length || 0 }} kommentaari
+                </div>
             </div>
         </div>
     </div>
