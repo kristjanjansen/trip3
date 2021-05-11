@@ -1,5 +1,5 @@
 import router from "ziggy-js";
-import { __ } from "../utils";
+import { trans, __ } from "./utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 import { PageProps as InertiaPageProps } from "@inertiajs/inertia";
 
@@ -18,6 +18,7 @@ declare module "vue" {
     }
     export interface ComponentCustomProperties {
         route: typeof router;
+        trans: typeof trans;
         __: typeof __;
     }
 }

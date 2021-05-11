@@ -11,6 +11,7 @@ const page = usePage<{
 
 <template>
     <div>
+        {{ trans("validation.lt.numeric", { attribute: "aaa" }) }}
         <ForumHeader />
         <div class="p-6 pt-12 lg:container lg:mx-auto bg-gray-50">
             <div class="h-12" />
