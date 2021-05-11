@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import type { Content } from "../types";
-defineProps<{ content: Content }>();
+import { useTimeAgo } from "@vueuse/core";
+const props = defineProps<{ content: Content }>();
+const ago = useTimeAgo(props.content.created_at);
 </script>
 
 <template>
@@ -24,9 +25,9 @@ defineProps<{ content: Content }>();
                 <div class="text-base text-gray-500">
                     {{ __("Postitas") }}
                     <span class="font-medium text-cyan-500">
-                        {{ content.user.name }}
+                        {{ content.user?.name }}
                     </span>
-                    {{ content.created_at }}
+                    {{ ago }}
                 </div>
                 <div class="text-base text-gray-500">
                     {{ content.comments?.length || 0 }} kommentaari

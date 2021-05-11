@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
-import type { Content } from "../types";
+// import type { Content } from "../types";
 
 const { content } = usePage<{ content: Content }>().props.value;
 const text = ref("bla");

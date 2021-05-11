@@ -15,11 +15,17 @@ class Comment extends Model
 
     // Relations
 
+    /**
+     * @return Illuminate\Database\Eloquent\Relations
+     */
     public function content()
     {
         return $this->belongsTo("App\Models\Content");
     }
 
+    /**
+     * @return Illuminate\Database\Eloquent\Relations
+     */
     public function user()
     {
         return $this->belongsTo("App\Models\User");

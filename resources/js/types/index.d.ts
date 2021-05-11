@@ -3,28 +3,28 @@ import { __ } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 import { PageProps as InertiaPageProps } from "@inertiajs/inertia";
 
-export type User = {
-    id: number;
-    name: string;
-};
+// export type User = {
+//     id: number;
+//     name: string;
+// };
 
-export type Comment = {
-    id: number;
-    title: string;
-    user: User;
-    date: string;
-    body: string;
-};
+// export type Comment = {
+//     id: number;
+//     title: string;
+//     user: User;
+//     date: string;
+//     body: string;
+// };
 
-export type Content = {
-    id: number;
-    title: string;
-    user: User;
-    date: string;
-    body: string;
-    tags?: string[];
-    comments?: Comment[];
-};
+// export type Content = {
+//     id: number;
+//     title: string;
+//     user: User;
+//     date: string;
+//     body: string;
+//     tags?: string[];
+//     comments?: Comment[];
+// };
 
 export type Shared = {
     links: any;

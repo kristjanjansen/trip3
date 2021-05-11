@@ -7,8 +7,13 @@ class ForumController extends Controller
 {
     public function index()
     {
+        $contents = Content::with(["user", "comments"])
+            ->latest()
+            ->simplePaginate(5)
+            ->withQueryString();
+        //return response()->json($contents);
         return inertia("ForumIndex", [
-            "contents" => Content::with(["user", "comments"])->get(),
+            "contents" => $contents,
         ])->withViewData([
             "title" => __("Forum"),
         ]);
@@ -21,6 +26,7 @@ class ForumController extends Controller
             "comments",
             "comments.user",
         ])->findOrFail($index);
+
         return inertia("ForumShow", [
             "content" => $content,
         ])->withViewData([
