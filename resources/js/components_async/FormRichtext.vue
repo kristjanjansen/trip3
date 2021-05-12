@@ -2,10 +2,18 @@
 import { defineProps, watch, useContext } from "vue";
 import { useEditor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
+import { isEmpty } from "lodash-es";
 
 // @TODO bold, italic, link, placeholder
 
-const props = defineProps<{ modelValue: string; placeholder?: string }>();
+const props = defineProps<{
+    label?: string;
+    name: string;
+    modelValue: string;
+    placeholder?: string;
+    errors?: Record<string, string>;
+}>();
+
 const { emit } = useContext();
 
 const editor = useEditor({
@@ -13,7 +21,10 @@ const editor = useEditor({
     extensions: [StarterKit],
     editorProps: {
         attributes: {
-            class: "p-3 border-2 border-gray-400 rounded-sm",
+            class: [
+                ...["p-3 border-2 rounded-sm h-48"],
+                isEmpty(props.errors) ? "border-gray-400" : "border-red-500",
+            ].join(" "),
         },
     },
     onUpdate: () => {
@@ -33,5 +44,7 @@ watch(
 </script>
 
 <template>
-    <editor-content :editor="editor" />
+    <FieldLayout :label="label" :name="name" :errors="errors">
+        <EditorContent :editor="editor" />
+    </FieldLayout>
 </template>

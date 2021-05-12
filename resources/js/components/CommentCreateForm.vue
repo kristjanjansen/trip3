@@ -12,7 +12,13 @@ const onSubmit = () => {
 <template>
     <ForumLayout>
         <form @submit.prevent="onSubmit" class="grid gap-6">
-            <FormTextfield
+            <FormRichtext
+                :label="__('Comment')"
+                name="body"
+                v-model="form.body"
+                :errors="form.errors"
+            />
+            <FormTextarea
                 :label="__('Comment')"
                 name="body"
                 v-model="form.body"
