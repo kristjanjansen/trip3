@@ -10,9 +10,11 @@ const onSubmit = () => {
 };
 </script>
 <template>
-    <form @submit.prevent="onSubmit">
-        <FormTextarea name="body" v-model="form.body" />
-        <Button type="submit" :disabled="form.processing">Submit</Button>
-        |{{ form.errors }}|
-    </form>
+    <ForumLayout>
+        <form @submit.prevent="onSubmit">
+            <FormTextarea name="body" v-model="form.body" />
+            <Button type="submit" :disabled="form.processing">Submit</Button>
+            |{{ form.errors }}|
+        </form>
+    </ForumLayout>
 </template>

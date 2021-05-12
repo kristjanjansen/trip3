@@ -5,8 +5,7 @@ defineProps<{ comments: Comment[] }>();
 </script>
 
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-5">
-        <div class="w-0 md:w-16" />
+    <ForumLayout>
         <div class="grid gap-4">
             <Comment
                 v-for="(comment, i) in comments"
@@ -14,5 +13,5 @@ defineProps<{ comments: Comment[] }>();
                 :comment="comment"
             />
         </div>
-    </div>
+    </ForumLayout>
 </template>

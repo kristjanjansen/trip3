@@ -14,8 +14,9 @@ const text = ref("bla");
             <div class="h-12" />
             <ForumPost :content="content" />
             <div class="h-12" />
-            <CommentCreateForm />
             <Comments v-if="content.comments" :comments="content.comments" />
+            <div class="h-12" />
+            <CommentCreateForm />
         </div>
         <Footer />
     </div>
