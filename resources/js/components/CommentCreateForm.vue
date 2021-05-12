@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
 
 const form = useForm({
@@ -11,10 +11,20 @@ const onSubmit = () => {
 </script>
 <template>
     <ForumLayout>
-        <form @submit.prevent="onSubmit">
-            <FormTextarea name="body" v-model="form.body" />
-            <Button type="submit" :disabled="form.processing">Submit</Button>
-            |{{ form.errors }}|
+        <form @submit.prevent="onSubmit" class="grid gap-6">
+            <FormTextfield
+                :label="__('Comment')"
+                name="body"
+                v-model="form.body"
+                :errors="form.errors"
+            />
+            <Button
+                type="submit"
+                :disabled="form.processing"
+                class="justify-self-start"
+            >
+                Submit
+            </Button>
         </form>
     </ForumLayout>
 </template>

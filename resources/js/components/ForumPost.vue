@@ -13,9 +13,6 @@ defineProps<{ content: Content }>();
             <h1 class="text-3xl font-bold tracking-tight text-color-500">
                 {{ content.title }}
             </h1>
-            <div v-if="content.tags" class="flex h-6 gap-2">
-                <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
-            </div>
             <div
                 class="prose lg:prose-lg max-w-none prose-blue"
                 v-html="content.body"

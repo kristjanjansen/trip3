@@ -9,9 +9,9 @@ defineProps<{ comment: Comment }>();
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <icon-user class="w-8 h-8 text-gray-200" />
-                <inertia-link href="" class="text-sm font-medium text-cyan-500">
+                <InertiaLink href="" class="text-sm font-medium text-cyan-500">
                     {{ comment.user.name }}
-                </inertia-link>
+                </InertiaLink>
                 <div class="text-sm font-medium text-gray-300">
                     {{ comment.date }}
                 </div>

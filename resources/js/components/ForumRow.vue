@@ -14,12 +14,12 @@ const ago = useTimeAgo(props.content.created_at);
             <icon-user />
         </div>
         <div class="grid gap-3">
-            <inertia-link
+            <InertiaLink
                 :href="route('forum.show', content.id)"
                 class="text-xl font-bold text-gray-700"
             >
                 <h3>{{ content.title }}</h3>
-            </inertia-link>
+            </InertiaLink>
             <div class="flex items-center h-6 gap-3">
                 <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
                 <div class="text-base text-gray-500">
