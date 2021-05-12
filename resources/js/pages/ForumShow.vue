@@ -19,7 +19,7 @@ const text = ref("bla");
                 :comments="content.comments"
             />
             <div class="h-12" />
-            <CommentCreateForm />
+            <CommentCreateForm :content="content" />
         </div>
         <Footer />
     </div>

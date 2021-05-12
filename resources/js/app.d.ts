@@ -20,6 +20,7 @@ declare module "vue" {
         ButtonLink: typeof import("./components/ButtonLink.vue").default;
         Comment: typeof import("./components/Comment.vue").default;
         CommentCreateForm: typeof import("./components/CommentCreateForm.vue").default;
+        CommentEditForm: typeof import("./components/CommentEditForm.vue").default;
         Comments: typeof import("./components/Comments.vue").default;
         FieldLayout: typeof import("./components/FieldLayout.vue").default;
         Footer: typeof import("./components/Footer.vue").default;

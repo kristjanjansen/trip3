@@ -16,8 +16,12 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
-Route::post("/comment", [CommentController::class, "store"])->name(
+Route::post("/comment/{id}", [CommentController::class, "store"])->name(
     "comment.store"
 );
+Route::put("/comment/{id}/{comment_id}", [
+    CommentController::class,
+    "update",
+])->name("comment.update");
 
 Route::get("/", [ForumController::class, "index"])->name("forum.index");

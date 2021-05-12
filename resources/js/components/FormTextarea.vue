@@ -22,8 +22,5 @@ const value = useVModel(props);
             :class="{ 'border-red-500': errors?.[name] }"
             :placeholder="placeholder"
         />
-        <div class="font-medium text-red-500" v-if="errors?.[name]">
-            {{ errors[name] }}
-        </div>
     </FieldLayout>
 </template>

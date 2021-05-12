@@ -1,24 +1,29 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
+import type { Comment } from "../models/comment";
+import { Inertia } from "@inertiajs/inertia";
 
-const props = defineProps<{ content: Content }>();
+const props = defineProps<{ comment: Comment }>();
 
 const form = useForm({
-    body: "",
+    body: props.comment.body || "",
 });
+
 const onSubmit = () => {
-    form.post(route("comment.store", [props.content.id]), {
-        preserveScroll: true,
-        onSuccess: () => {
-            Inertia.visit(route("forum.show", props.content.id), {
-                preserveScroll: true,
-                only: ["content"],
-            });
-        },
-    });
+    form.put(
+        route("comment.update", [props.comment.content_id, props.comment.id]),
+        {
+            preserveScroll: true,
+            onSuccess: () => {
+                Inertia.visit(route("forum.show", props.comment.content_id), {
+                    preserveScroll: true,
+                    only: ["content"],
+                });
+            },
+        }
+    );
 };
 </script>
 <template>
@@ -35,7 +40,7 @@ const onSubmit = () => {
                 :disabled="form.processing"
                 class="justify-self-start"
             >
-                Submit
+                Update
             </Button>
         </form>
     </ForumLayout>

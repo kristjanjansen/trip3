@@ -19,16 +19,13 @@ const { emit } = useContext();
 const editor = useEditor({
     content: props.modelValue,
     extensions: [StarterKit],
-    editorProps: {
-        attributes: {
-            class: [
-                ...["p-3 border-2 rounded-sm h-48"],
-                isEmpty(props.errors) ? "border-gray-400" : "border-red-500",
-            ].join(" "),
-        },
-    },
     onUpdate: () => {
         emit("update:modelValue", editor.value?.getHTML());
+    },
+    editorProps: {
+        attributes: {
+            class: "p-3 border-2 rounded-sm h-48 border-gray-400",
+        },
     },
 });
 
@@ -40,6 +37,25 @@ watch(
         }
         editor.value?.commands.setContent(modelValue, false);
     }
+);
+
+// @TODO: Fix the border update
+watch(
+    [() => props.errors, editor],
+    (errors) => {
+        if (editor.value) {
+            editor.value.setOptions({
+                editorProps: {
+                    attributes: {
+                        class: isEmpty(errors)
+                            ? "border-gray-400"
+                            : "border-red-500",
+                    },
+                },
+            });
+        }
+    },
+    { immediate: true }
 );
 </script>
 
