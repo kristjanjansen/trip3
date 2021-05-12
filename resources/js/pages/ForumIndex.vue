@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-const page = usePage<{
-    contents: {
-        data: Content[];
-        prev_page_url: string | null;
-        next_page_url: string | null;
-    };
-}>().props.value;
+import type { Content } from "../models/content";
+
+const page =
+    usePage<{
+        contents: {
+            data: Content[];
+            prev_page_url: string | null;
+            next_page_url: string | null;
+        };
+    }>().props.value;
 </script>
 
 <template>

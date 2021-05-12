@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
+import type { Comment } from "../models/comment";
 
 defineProps<{ comments: Comment[] }>();
 </script>
 
 <template>
-    <ForumLayout>
-        <div class="grid gap-4">
+    <div>
+        <div />
+        <TransitionGroupFade>
             <Comment
                 v-for="(comment, i) in comments"
-                :key="i"
+                :key="comment.id || i"
                 :comment="comment"
             />
-        </div>
-    </ForumLayout>
+        </TransitionGroupFade>
+    </div>
 </template>

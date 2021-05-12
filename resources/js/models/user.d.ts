@@ -1,4 +1,7 @@
-type User = {
+import type { Content } from "./content";
+import type { Comment } from "./comment";
+
+export type User = {
     id: number;
     name: string;
     email: string;

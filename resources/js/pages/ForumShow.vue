@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
-// import type { Content } from "../types";
+import type { Content } from "../types/content";
 
 const { content } = usePage<{ content: Content }>().props.value;
 const text = ref("bla");
@@ -19,7 +19,9 @@ const text = ref("bla");
                 :comments="content.comments"
             />
             <div class="h-12" />
-            <CommentCreateForm :content="content" />
+            <ForumLayout>
+                <CommentCreateForm :content="content" />
+            </ForumLayout>
         </div>
         <Footer />
     </div>

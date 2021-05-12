@@ -1,4 +1,7 @@
-type Content = {
+import type { User } from "./user";
+import type { Comment } from "./comment";
+
+export type Content = {
     id: number;
     user_id: number;
     title: string | null;

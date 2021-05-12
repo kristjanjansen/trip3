@@ -1,3 +1,6 @@
+import type { User } from "./user";
+import type { Content } from "./content";
+
 export type Comment = {
     id: number;
     user_id: number;

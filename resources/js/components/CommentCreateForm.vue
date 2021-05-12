@@ -22,21 +22,19 @@ const onSubmit = () => {
 };
 </script>
 <template>
-    <ForumLayout>
-        <form @submit.prevent="onSubmit" class="grid gap-6">
-            <FormTextarea
-                :label="__('Comment')"
-                name="body"
-                v-model="form.body"
-                :errors="form.errors"
-            />
-            <Button
-                type="submit"
-                :disabled="form.processing"
-                class="justify-self-start"
-            >
-                Submit
-            </Button>
-        </form>
-    </ForumLayout>
+    <form @submit.prevent="onSubmit" class="grid gap-6">
+        <FormTextarea
+            :label="__('Comment')"
+            name="body"
+            v-model="form.body"
+            :errors="form.errors"
+        />
+        <Button
+            type="submit"
+            :disabled="form.processing"
+            class="justify-self-start"
+        >
+            Submit
+        </Button>
+    </form>
 </template>
