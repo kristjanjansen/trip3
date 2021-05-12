@@ -1,7 +1,4 @@
-import type { User } from "./user";
-import type { Content } from "./content";
-
-export type Comment = {
+type Comment = {
     id: number;
     user_id: number;
     content_id: number;

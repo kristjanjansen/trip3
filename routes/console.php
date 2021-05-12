@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+use Illuminate\Support\Facades\Storage;
+
+Artisan::command("generate:types", function () {
+    $this->call("types:generate");
+    $models = collect(Storage::allFiles("resources/js/models"));
+    $f = $models
+        ->map(fn($path) => Storage::get($path))
+        ->map(fn($model) => "export " . $model)
+        ->join("\n");
+    Storage::put("/resources/js/models.ts", $f);
+});
