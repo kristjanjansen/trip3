@@ -18,12 +18,6 @@ const onSubmit = () => {
                 v-model="form.body"
                 :errors="form.errors"
             />
-            <FormTextarea
-                :label="__('Comment')"
-                name="body"
-                v-model="form.body"
-                :errors="form.errors"
-            />
             <Button
                 type="submit"
                 :disabled="form.processing"
