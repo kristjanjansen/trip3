@@ -35,7 +35,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return Illuminate\Database\Eloquent\Relations
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function contents()
     {
@@ -43,7 +43,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return Illuminate\Database\Eloquent\Relations
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {

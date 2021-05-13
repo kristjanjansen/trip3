@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-import { ref } from "vue";
-import type { Content } from "../types/content";
+import type { Content } from "../types";
 
-const { content } = usePage<{ content: Content }>().props.value;
-const text = ref("bla");
+const page = usePage<{ content: Content }>().props.value;
 </script>
 
 <template>
@@ -12,15 +10,20 @@ const text = ref("bla");
         <ForumHeader />
         <div class="p-6 pt-12 lg:container lg:mx-auto bg-gray-50">
             <div class="h-12" />
-            <ForumPost :content="content" />
-            <div v-if="content.comments?.length" class="h-12" />
-            <Comments
-                v-if="content.comments?.length"
-                :comments="content.comments"
-            />
+            <ForumPost :content="page.content" />
+            <div v-if="page.content.comments" class="h-12" />
+            <ForumLayout>
+                <div class="grid gap-4">
+                    <Comment
+                        v-for="(comment, i) in page.content.comments"
+                        :key="comment.id || i"
+                        :comment="comment"
+                    />
+                </div>
+            </ForumLayout>
             <div class="h-12" />
             <ForumLayout>
-                <CommentCreateForm :content="content" />
+                <CommentCreateForm :content="page.content" />
             </ForumLayout>
         </div>
         <Footer />

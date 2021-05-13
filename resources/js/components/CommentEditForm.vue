@@ -3,7 +3,7 @@ import { defineProps, defineEmit } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
-import type { Comment } from "../models/comment";
+import type { Comment } from "../types";
 
 const props = defineProps<{ comment: Comment }>();
 const emit = defineEmit<(e: "updated") => void>();

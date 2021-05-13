@@ -16,7 +16,7 @@ class Comment extends Model
     // Relations
 
     /**
-     * @return Illuminate\Database\Eloquent\Relations
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function content()
     {
@@ -24,7 +24,7 @@ class Comment extends Model
     }
 
     /**
-     * @return Illuminate\Database\Eloquent\Relations
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {

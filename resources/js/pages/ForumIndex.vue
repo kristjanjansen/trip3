@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-import type { Content } from "../models/content";
+import type { Content } from "../types";
 
 const page =
     usePage<{

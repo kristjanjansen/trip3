@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref } from "vue";
-import type { Comment } from "../models/comment";
+import type { Comment } from "../types";
 
 defineProps<{ comment: Comment }>();
 

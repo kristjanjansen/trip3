@@ -19,31 +19,36 @@ use Illuminate\Support\Facades\Storage;
 Artisan::command("generate:types", function () {
     $this->call("types:generate");
 
-    $models = collect(Storage::files("resources/js/models"));
-    $components = collect(Storage::files("resources/js/components"));
-    $components_async = collect(
-        Storage::files("resources/js/components_async")
-    );
-
-    $c = $components
+    $components = collect(Storage::files("resources/js/components"))
         ->map(fn($path) => basename($path, ".vue"))
         ->map(
             fn($name) => "        " .
                 $name .
-                ': typeof import("./components/' .
+                ': typeof import("../components/' .
                 $name .
                 '.vue").default;'
         )
         ->join("\n");
 
-    $m = $models
+    $componentsAsync = collect(Storage::files("resources/js/components_async"))
+        ->map(fn($path) => basename($path, ".vue"))
+        ->map(
+            fn($name) => "        " .
+                $name .
+                ': typeof import("../components_async/' .
+                $name .
+                '.vue").default;'
+        )
+        ->join("\n");
+
+    $models = collect(Storage::files("resources/js/models"))
         ->map(fn($path) => Storage::get($path))
         ->map(fn($model) => "export " . $model)
         ->join("\n");
 
     $template = <<<END
 import router from "ziggy-js";
-import { trans, __ } from "./utils";
+import { trans, __ } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {
@@ -54,12 +59,15 @@ declare module "vue" {
     }
     export interface GlobalComponents {
         InertiaLink: InertiaLink;
-$c
+$components
+
+$componentsAsync
     }
 }
 
-$m;
+$models
 END;
 
-    Storage::put("/resources/js/models.ts", $template);
+    Storage::put("/resources/js/types/index.ts", $template);
+    Storage::deleteDirectory("/resources/js/models");
 });

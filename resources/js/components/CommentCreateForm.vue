@@ -3,6 +3,7 @@ import { defineProps } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
+import type { Content } from "../types";
 
 const props = defineProps<{ content: Content }>();
 
