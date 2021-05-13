@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <breeze-guest>
         <breeze-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -72,13 +72,11 @@
                 </breeze-button>
             </div>
         </form>
-    </div>
+    </breeze-guest>
 </template>
 
 <script>
 export default {
-    layoutName: "Guest",
-
     props: {
         auth: Object,
         errors: Object,

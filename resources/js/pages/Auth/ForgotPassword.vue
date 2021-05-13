@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <breeze-guest>
         <div class="mb-4 text-sm text-gray-600">
             Forgot your password? No problem. Just let us know your email
             address and we will email you a password reset link that will allow
@@ -35,13 +35,11 @@
                 </breeze-button>
             </div>
         </form>
-    </div>
+    </breeze-guest>
 </template>
 
 <script>
 export default {
-    layoutName: "Guest",
-
     props: {
         auth: Object,
         errors: Object,

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <breeze-guest>
         <breeze-validation-errors class="mb-4" />
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
@@ -60,13 +60,11 @@
                 </breeze-button>
             </div>
         </form>
-    </div>
+    </breeze-guest>
 </template>
 
 <script>
 export default {
-    layoutName: "Guest",
-
     props: {
         auth: Object,
         canResetPassword: Boolean,
