@@ -9,7 +9,7 @@ class ForumController extends Controller
     {
         $contents = Content::with(["user", "comments"])
             ->latest()
-            ->simplePaginate(5)
+            ->simplePaginate(15)
             ->withQueryString();
         //return response()->json($contents);
         return inertia("ForumIndex", [

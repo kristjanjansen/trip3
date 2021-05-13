@@ -9,9 +9,9 @@ export default ({ command }) => ({
     base: command === "build" ? "/dist/" : "",
     plugins: [
         vue(),
-        liveReload(
-            "(app|config|database|public|resources|routes|tests)/**/*.php"
-        ),
+        // liveReload(
+        //     "(app|config|database|public|resources|routes|tests)/**/*.php"
+        // ),
     ],
     build: {
         manifest: true,

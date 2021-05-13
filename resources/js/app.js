@@ -1,5 +1,3 @@
-import "vite/dynamic-import-polyfill";
-
 import { createApp, h, defineAsyncComponent } from "vue";
 import { App, plugin } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";

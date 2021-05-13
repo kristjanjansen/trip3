@@ -50,16 +50,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.fade-enter-active,
-.fade-leave-active {
-    @apply transition-opacity duration-200;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    @apply opacity-0;
-}
-
 .debug {
     @apply border border-red-300;
 }

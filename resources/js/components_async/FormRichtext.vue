@@ -4,15 +4,21 @@ import { useEditor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
 import { isEmpty } from "lodash-es";
 
-// @TODO bold, italic, link, placeholder
+/* @TODO 
+    bold, italic, link, placeholder
+    autocapitalize="none"
+    autocorrect="off"
+    spellcheck="false"
+*/
 
-const props = defineProps<{
-    label?: string;
-    name: string;
-    modelValue: string;
-    placeholder?: string;
-    errors?: Record<string, string>;
-}>();
+const props =
+    defineProps<{
+        label?: string;
+        name: string;
+        modelValue: string;
+        placeholder?: string;
+        errors?: Record<string, string>;
+    }>();
 
 const { emit } = useContext();
 
