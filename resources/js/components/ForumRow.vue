@@ -1,38 +1,44 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { useTimeAgo } from "@vueuse/core";
+import type { Content } from "../types";
 const props = defineProps<{ content: Content }>();
-const ago = useTimeAgo(props.content.created_at);
+const ago = useTimeAgo(props.content.created_at || new Date());
 </script>
 
 <template>
-    <div class="flex items-center gap-6">
+    <div class="grid grid-cols-[auto,1fr] gap-4">
         <!-- {{ content }} -->
         <div
-            class="text-gray-200 transform -translate-y-0.5 w-14 h-14 rounded-full overflow-hidden"
+            class="
+                text-gray-200
+                transform
+                -translate-y-0.5
+                w-14
+                h-14
+                rounded-full
+                overflow-hidden
+            "
         >
             <icon-user />
         </div>
-        <div class="grid gap-3">
-            <InertiaLink
-                :href="route('forum.show', content.id)"
-                class="text-xl font-bold text-gray-700"
-            >
-                <h3>{{ content.title }}</h3>
-            </InertiaLink>
-            <div class="flex items-center h-6 gap-3">
-                <Tag v-for="(tag, i) in content.tags" :key="i">{{ tag }}</Tag>
+        <InertiaLink
+            :href="route('forum.show', content.id)"
+            class="flex flex-col gap-4"
+        >
+            <h3 class="text-xl font-bold text-gray-700">{{ content.title }}</h3>
+            <div class="flex flex-col gap-3 md:items-center md:flex-row">
+                <div class="text-base text-gray-500">{{ __("Postitas") }}</div>
+                <div class="text-base font-medium text-cyan-500">
+                    {{ content.user?.name }}
+                </div>
                 <div class="text-base text-gray-500">
-                    {{ __("Postitas") }}
-                    <span class="font-medium text-cyan-500">
-                        {{ content.user?.name }}
-                    </span>
                     {{ ago }}
                 </div>
                 <div class="text-base text-gray-500">
                     {{ content.comments?.length || 0 }} kommentaari
                 </div>
             </div>
-        </div>
+        </InertiaLink>
     </div>
 </template>

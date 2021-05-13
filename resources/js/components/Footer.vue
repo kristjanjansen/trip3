@@ -7,11 +7,13 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
 <template>
     <div class="pt-12 pb-24 pl-6 pr-6 bg-gray-100">
         <div
-            class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
+            class="container grid justify-center gap-4 text-center  lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
-            <InertiaLink :href="route(shared.links.index.route)">
+            <InertiaLink
+                :href="route(shared.links.index.route)"
+                class="flex justify-center md:justify-start"
+            >
                 <logo-plain class="h-6 text-gray-600" />
-                <div class="hidden h-8" />
             </InertiaLink>
             <div class="grid gap-6 auto-rows-max">
                 <InertiaLink
