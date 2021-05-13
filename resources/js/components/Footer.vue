@@ -11,7 +11,7 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
         >
             <InertiaLink
                 :href="route(shared.links.index.route)"
-                class="flex justify-center md:justify-start debug"
+                class="flex justify-center md:justify-start"
             >
                 <logo-plain class="h-6 text-gray-600" />
             </InertiaLink>
