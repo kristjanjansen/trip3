@@ -15,9 +15,8 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::redirect("/", "/forum");
+Route::get("/", [ForumController::class, "index"])->name("forum.index");
 Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
-Route::get("/forum", [ForumController::class, "index"])->name("forum.index");
 Route::post("/comment/{id}", [CommentController::class, "store"])->name(
     "comment.store"
 );
