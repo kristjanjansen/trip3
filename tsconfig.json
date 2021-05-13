@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
         "strict": true,
         "jsx": "preserve",
         "sourceMap": true,
@@ -10,13 +10,8 @@
         "esModuleInterop": true,
         "allowJs": true,
         "checkJs": false,
-        "lib": ["esnext", "dom"],
+        "lib": ["ESNext", "DOM"],
         "types": ["vite/client", "ziggy-js"]
     },
-    "include": [
-        "resources/js/**/*.ts",
-        "resources/js/**/*.d.ts",
-        "resources/js/**/*.vue",
-        "resources/js/app.js"
-    ]
+    "exclude": ["node_modules"]
 }

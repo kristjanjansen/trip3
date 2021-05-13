@@ -3,17 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Content;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ContentFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Content::class;
+    protected $model = Comment::class;
 
     /**
      * Define the model's default state.
@@ -23,18 +24,12 @@ class ContentFactory extends Factory
     public function definition()
     {
         $user = User::factory()->create();
+        $content = Content::factory()->create();
         $date = $this->faker->dateTimeThisMonth();
-        $type = $this->faker->randomElement([
-            "general",
-            "buysell",
-            "expats",
-            "misc",
-        ]);
         return [
-            "title" => $this->faker->sentence(),
             "user_id" => $user,
-            "body" => $this->faker->paragraphs(2, true),
-            "type" => $type,
+            "content_id" => $content,
+            "body" => $this->faker->paragraph(),
             "created_at" => $date,
             "updated_at" => $date,
         ];

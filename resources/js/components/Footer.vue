@@ -9,54 +9,54 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
         <div
             class="container grid justify-center gap-4 text-center lg:mx-auto grid-cols-0 md:grid-cols-4 md:justify-start md:text-left"
         >
-            <inertia-link :href="route(shared.links.index.route)">
-                <div class="h-6 text-gray-600"><logo-plain class="h-6" /></div>
+            <InertiaLink :href="route(shared.links.index.route)">
+                <logo-plain class="h-6 text-gray-600" />
                 <div class="hidden h-8" />
-            </inertia-link>
+            </InertiaLink>
             <div class="grid gap-6 auto-rows-max">
-                <inertia-link
-                    v-for="(link, i) in shared.links.footerFirst"
-                    :key="i"
+                <InertiaLink
+                    v-for="link in shared.links.footerFirst"
+                    :key="link"
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
                     {{ __(link.title) }}
-                </inertia-link>
+                </InertiaLink>
             </div>
             <div class="grid gap-6 auto-rows-max">
-                <inertia-link
-                    v-for="(link, i) in shared.links.footerSecond"
-                    :key="i"
+                <InertiaLink
+                    v-for="link in shared.links.footerSecond"
+                    :key="link"
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
                     {{ __(link.title) }}
-                </inertia-link>
+                </InertiaLink>
             </div>
             <div class="grid gap-6 auto-rows-max">
-                <inertia-link
-                    v-for="(link, i) in shared.links.footerThird"
-                    :key="i"
+                <InertiaLink
+                    v-for="link in shared.links.footerThird"
+                    :key="link"
                     :href="route(link.route)"
                     class="text-base font-medium text-gray-600"
                 >
                     {{ __(link.title) }}
-                </inertia-link>
+                </InertiaLink>
             </div>
         </div>
         <div class="h-16" />
         <div
             class="flex flex-col items-center justify-center gap-6 md:flex-row"
         >
-            <inertia-link
-                v-for="(link, i) in shared.links.footerSocial"
-                :key="i"
+            <InertiaLink
+                v-for="link in shared.links.footerSocial"
+                :link="link"
                 :href="route(link.route)"
                 class="flex items-center gap-2 text-sm text-gray-600"
             >
-                <icon-rss class="hidden w-4 h-4 text-gray-600 md:block" />
+                <IconRss class="hidden w-4 h-4 text-gray-600 md:block" />
                 <div class="text-base font-medium">{{ __(link.title) }}</div>
-            </inertia-link>
+            </InertiaLink>
         </div>
         <div class="h-12" />
         <div class="text-base text-center text-gray-400">

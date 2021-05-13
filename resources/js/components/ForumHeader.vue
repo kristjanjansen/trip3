@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-import type { Shared } from "../types";
+import type { Shared } from "../app";
 
-const { shared } = usePage<{ shared: Shared }>().props.value;
+const page = usePage<{ shared: Shared }>().props.value;
 </script>
 
 <template>
     <div class="relative p-6 pb-0 overflow-hidden bg-gray-100 lg:px-0 lg:pt-10">
-        <background-map
+        <!-- <background-map
             class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
-        />
+        /> -->
         <div class="container inset-0 grid gap-6 lg:mx-auto">
             <div class="h-6">
                 <transition name="fade"><Nav /></transition>
@@ -21,15 +21,15 @@ const { shared } = usePage<{ shared: Shared }>().props.value;
                 {{ __("Forum") }}
             </h1>
             <div class="flex overflow-x-scroll lg:overscroll-auto">
-                <inertia-link
-                    v-for="(link, i) in shared.links.footerSecond"
-                    :key="i"
+                <InertiaLink
+                    v-for="(link, i) in page.shared.links.footerSecond"
+                    :key="link"
                     class="px-5 py-3 font-bold text-gray-500 whitespace-nowrap text-md"
                     :class="{ 'bg-white text-gray-800': i === 0 }"
                     :href="route(link.route)"
                 >
                     {{ link.title }}
-                </inertia-link>
+                </InertiaLink>
             </div>
         </div>
     </div>

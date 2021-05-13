@@ -16,21 +16,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ["name", "email", "password"];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ["password", "remember_token"];
 
     /**
      * The attributes that should be cast to native types.
@@ -38,6 +31,22 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        "email_verified_at" => "datetime",
     ];
+
+    /**
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contents()
+    {
+        return $this->hasMany("App\Models\Content");
+    }
+
+    /**
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany("App\Models\Comment");
+    }
 }
