@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @production
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    @endproduction
     <link rel="preload" href="/fonts/Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/RegularItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Bold.woff2" as="font" type="font/woff2" crossorigin>
     <title>Trip.ee - {{ $title ?? '' }}</title>
+    @production
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    @endproduction
 </head>
 
 <body class="min-h-screen font-sans antialiased text-gray-700">
