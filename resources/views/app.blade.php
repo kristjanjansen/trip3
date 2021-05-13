@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preload" href="/fonts/Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/RegularItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Medium.woff2" as="font" type="font/woff2" crossorigin>
@@ -28,3 +29,4 @@
 </body>
 
 </html>
+

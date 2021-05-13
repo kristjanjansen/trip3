@@ -10,8 +10,20 @@ declare module "vue" {
     }
     export interface GlobalComponents {
         InertiaLink: InertiaLink;
+        Authenticated: typeof import("../components/Authenticated.vue").default;
         BackgroundGrid: typeof import("../components/BackgroundGrid.vue").default;
         BlockTitle: typeof import("../components/BlockTitle.vue").default;
+        BreezeApplicationLogo: typeof import("../components/BreezeApplicationLogo.vue").default;
+        BreezeButton: typeof import("../components/BreezeButton.vue").default;
+        BreezeCheckbox: typeof import("../components/BreezeCheckbox.vue").default;
+        BreezeDropdown: typeof import("../components/BreezeDropdown.vue").default;
+        BreezeDropdownLink: typeof import("../components/BreezeDropdownLink.vue").default;
+        BreezeInput: typeof import("../components/BreezeInput.vue").default;
+        BreezeInputError: typeof import("../components/BreezeInputError.vue").default;
+        BreezeLabel: typeof import("../components/BreezeLabel.vue").default;
+        BreezeNavLink: typeof import("../components/BreezeNavLink.vue").default;
+        BreezeResponsiveNavLink: typeof import("../components/BreezeResponsiveNavLink.vue").default;
+        BreezeValidationErrors: typeof import("../components/BreezeValidationErrors.vue").default;
         Button: typeof import("../components/Button.vue").default;
         ButtonLink: typeof import("../components/ButtonLink.vue").default;
         Comment: typeof import("../components/Comment.vue").default;
