@@ -15,13 +15,19 @@ const links = [
     <div class="relative flex justify-between">
         <InertiaLink
             href="/"
-            class="absolute w-[200px] h-[100px] transform translate-x-[-56px] translate-y-[-34px]"
+            class="
+                absolute
+                w-[200px]
+                h-[100px]
+                transform
+                translate-x-[-56px] translate-y-[-34px]
+            "
         >
             <logo />
             <h1 class="sr-only">Trip.ee</h1>
         </InertiaLink>
         <div />
-        <div class="flex-wrap items-center hidden gap-4 lg:flex">
+        <div class="items-center hidden space-x-4 lg:flex">
             <icon-search class="w-5 h-5 text-gray-500" />
             <InertiaLink
                 v-for="link in links"

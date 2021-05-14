@@ -10,24 +10,18 @@ const ago = useTimeAgo(props.content.created_at || new Date());
     <div class="grid grid-cols-[auto,1fr] gap-4">
         <!-- {{ content }} -->
         <div
-            class="
-                text-gray-200
-                transform
-                -translate-y-0.5
-                w-14
-                h-14
-                rounded-full
-                overflow-hidden
-            "
+            class="overflow-hidden text-gray-200 transform -translate-y-1 rounded-full  w-14 h-14"
         >
             <icon-user />
         </div>
         <InertiaLink
             :href="route('forum.show', content.id)"
-            class="flex flex-col gap-4"
+            class="grid gap-4 auto-rows-min"
         >
             <h3 class="text-xl font-bold text-gray-700">{{ content.title }}</h3>
-            <div class="flex flex-col gap-3 md:items-center md:flex-row">
+            <div
+                class="flex flex-col space-y-3  md:space-x-3 md:space-y-0 md:items-center md:flex-row"
+            >
                 <div class="text-base text-gray-500">{{ __("Postitas") }}</div>
                 <div class="text-base font-medium text-cyan-500">
                     {{ content.user?.name }}
