@@ -4,6 +4,8 @@
 
 https://trip.ee stack exploration. See more at https://github.com/tripikad/trip2/issues/1970
 
+## Code
+
 ### Installation
 
 First, run
@@ -64,3 +66,13 @@ Then set the environment:
 
 APP_ENV=production
 ```
+
+## Recommended tooling
+
+### VS Code
+
+See [/.vscode/extensions.json](/.vscode/extensions.json)
+
+### PHPStorm
+
+**Tailwind Formatter** https://plugins.jetbrains.com/plugin/13376-tailwind-formatter/
