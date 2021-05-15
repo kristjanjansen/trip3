@@ -247,3 +247,5 @@ See [/.vscode/extensions.json](/.vscode/extensions.json)
 ### PHPStorm
 
 **Tailwind Formatter** https://plugins.jetbrains.com/plugin/13376-tailwind-formatter/
+
+See also https://youtrack.jetbrains.com/issue/WEB-49000
