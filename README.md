@@ -136,6 +136,10 @@ There are several component helpers available:
 
 `trans()` and `__()` for translations
 
+**TODO:** `formatDate()` and `formatDateAgo()` for date formatting
+
+**TODO:** `loggedUser` / `loggedUserRole` for authenticated use and user authorization.
+
 For templates the helpers globally available, for script you will need to import them first.
 
 ```vue
