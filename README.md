@@ -59,11 +59,35 @@ Then set the environment:
 APP_ENV=production
 ```
 
-## Writing Vue components
+## Vue components
 
-### Vue 3 component syntax
+### Component types
 
-For the component syntax we use Vue 3 composition API, script setup component syntax and Typescript (experimental). Typescript is there mostly for IDE ergonomics and this decision can easilty rolled back.
+We support both eager-loaded and lazy-loaded (async) components:
+
+#### Eager-loaded
+
+```
+/resources/js/components/*.vue
+```
+
+Eager loaded are bundled to the main app bundle and immediately loaded. Use eager-loaded components for simple components that do not have (huge) third-party dependencies.
+
+#### Lazy-loaded (async) compoennts
+
+```
+/resources/js/components_async/*.vue
+```
+
+Lazy loaded components are loaded only when needed on a page. They are useful for bigger, complex components that use third-party libraries (text editors etc).
+
+Note that async components are loaded later and cause layout shifts.
+
+### Component syntax
+
+For the component syntax we use Vue 3 [composition API](https://v3.vuejs.org/guide/composition-api-introduction.html), the new [script setup](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md) component syntax and Typescript (experimental).
+
+> Typescript is there for IDE ergonomics only and this decision can easilty rolled back.
 
 #### Vue 2 component
 
@@ -104,6 +128,24 @@ const hugeCounter = computed(() => counter.value * 1000);
 </script>
 ```
 
+### Vue component helpers
+
+There are several component helpers available:
+
+`route()`: for using Laravel named routes
+
+`trans()` and `__()` for translations
+
+For templates the helpers globally available, for script you will need to import them first.
+
+```vue
+<script setup lang="ts">
+import { route } from "../utils";
+
+route("frontpage"); // ...
+</script>
+```
+
 ### Generate model types
 
 (experimental) To generate the Typescript types based on Eloquent models, run
@@ -140,6 +182,12 @@ defineProps<{ comment: Comment }>();
 </script>
 ```
 
+## Tailwind CSS (experimental)
+
+This demo use Tailwind for CSS handling with custom configration that brings in Trip.ee custom colors and typography.
+
+> Tailwind decision has not yet been made, this exploration tests out the ergonomics of the utility classes workflow.
+
 ## Testing
 
 ### Running tests
@@ -170,13 +218,9 @@ php artisan dusk
 
 #### Running tests in CI
 
-<mark>TODO</mark>
-
 https://laravel.com/docs/dusk#running-tests-on-github-actions
 
 ### Writing tests
-
-<mark>TODO</mark>
 
 #### Selecting items in Vue components
 
@@ -203,7 +247,3 @@ See [/.vscode/extensions.json](/.vscode/extensions.json)
 ### PHPStorm
 
 **Tailwind Formatter** https://plugins.jetbrains.com/plugin/13376-tailwind-formatter/
-
-```
-
-```
