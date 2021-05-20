@@ -8,7 +8,7 @@ Trip stack exploration. See more at https://github.com/tripikad/trip2/issues/197
 
 https://elektron.studio/
 
-## Getting started
+## Development
 
 ### Installation
 
@@ -17,35 +17,65 @@ First, run
 ```sh
 composer install
 npm i
+
+# If you want to run Octane Swoole server:
+#
+# RUN pecl install --configureoptions 'enable-sockets="no" enable-openssl="no" enable-http2="no" enable-mysqlnd="no" enable-swoole-json="no" enable-swoole-curl="no"' swoole
 ```
 
-Then connect to a database in `.env` file
+Then set up a`.env` file
 
 ```sh
 # .env
 
-DATABASE_URL=mysql://...
+APP_KEY=base64:QG/uepNJT1GmxA4h89jWxanNWDB3/Eg80petqWKk1QY=
+APP_URL=http://trip3.test
+DATABASE_URL=mysql://root@127.0.0.1:3306/trip3
+
+# If you want to access external database
+#
+# DATABASE_URL=mysql://doadmin:pxrq0deppr...
+
+# If you want to run Octane Swoole server:
+#
+# APP_URL=http://localhost:8000
+# OCTANE_SERVER=swoole
 ```
 
-If you use local database, run also the migrations
+If you use local database, create the database and run the migrations
 
 ```sh
+mysqladmin -uroot create trip3
 php artisan migrate --seed
 ```
 
-### Development
+### Valet development
 
-First, run PHP server: either use [Valet](https://laravel.com/docs/8.x/valet) or Octane:
-
-```sh
-php artisan octane:start
-```
-
-Then run Vite server
+It you use [Valet](https://laravel.com/docs/8.x/valet) for PHP server, you just need to run Vite server for frontend development:
 
 ```sh
 npm run dev
 ```
+
+The server should be available at http://trip3.test
+
+### Octane development
+
+If you run [Octane](https://laravel.com/docs/octane) for PHP server, make sure you have set up Swoole as documented above.
+
+Then run Octane and Vite servers:
+
+```sh
+# First tab
+
+php artisan octane:start
+
+# Second tab
+
+npm run dev
+```
+
+The server should be available at http://127.0.0.1:8000
 
 ### Production
 
@@ -63,13 +93,13 @@ Then set the environment:
 APP_ENV=production
 ```
 
-## Vue components
+The local production server should now be available either at http://trip3.test or http://127.0.0.1:8000 dependent on your PHP server.
 
-### Component types
+## Frontend development
+
+### Eager-loaded Vue components
 
 We support both eager-loaded and lazy-loaded (async) components:
-
-#### Eager-loaded
 
 ```
 /resources/js/components/*.vue
@@ -77,7 +107,7 @@ We support both eager-loaded and lazy-loaded (async) components:
 
 Eager loaded are bundled to the main app bundle and immediately loaded. Use eager-loaded components for simple components that do not have (huge) third-party dependencies.
 
-#### Lazy-loaded (async) compoennts
+### Lazy-loaded Vue compoennts
 
 ```
 /resources/js/components_async/*.vue
@@ -87,13 +117,13 @@ Lazy loaded components are loaded only when needed on a page. They are useful fo
 
 Note that async components are loaded later and cause layout shifts.
 
-### Component syntax
+## Component syntax
 
 For the component syntax we use Vue 3 [composition API](https://v3.vuejs.org/guide/composition-api-introduction.html), the new [script setup](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md) component syntax and Typescript (experimental).
 
 > Typescript is there for IDE ergonomics only and this decision can easilty rolled back.
 
-#### Vue 2 component
+### Compare: Vue 2 component
 
 ```vue
 <script>
@@ -118,7 +148,7 @@ export default {
 </script>
 ```
 
-#### Vue 3 component
+### Compare: Vue 3 component
 
 ```vue
 <script setup lang="ts">
@@ -144,19 +174,27 @@ There are several component helpers available:
 
 **TODO:** `loggedUser` / `loggedUserRole` for authenticated use and user authorization.
 
-For templates the helpers globally available, for script you will need to import them first.
+For component templates, the helpers are globally available:
+
+```vue
+<template>
+    {{ __("Hola") }}
+</template>
+```
+
+For component code you will need to import the helper functions first:
 
 ```vue
 <script setup lang="ts">
-import { route } from "../utils";
+import { __ } from "../utils";
 
-route("frontpage"); // ...
+const greeting = __("Hola");
 </script>
 ```
 
-### Generate model types
+### Generate model types (experimental)
 
-(experimental) To generate the Typescript types based on Eloquent models, run
+To generate the Typescript types based on Eloquent models, run
 
 ```sh
 php artisan generate:types
@@ -198,9 +236,7 @@ This demo use Tailwind for CSS handling with custom configration that brings in 
 
 ## Testing
 
-### Running tests
-
-#### Running tests in development
+### Running tests in development
 
 The test are Laravel Dusk tests, running usin Puppeteer.
 
@@ -224,7 +260,7 @@ npm run dev
 php artisan dusk
 ```
 
-#### Running tests in CI
+### Running tests in CI
 
 https://laravel.com/docs/dusk#running-tests-on-github-actions
 
