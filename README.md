@@ -2,7 +2,11 @@
 
 ## About
 
-https://trip.ee stack exploration. See more at https://github.com/tripikad/trip2/issues/1970
+Trip stack exploration. See more at https://github.com/tripikad/trip2/issues/1970
+
+## Demo
+
+https://elektron.studio/
 
 ## Getting started
 
