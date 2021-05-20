@@ -69,8 +69,9 @@ RUN command -v npm
 COPY . /app
 WORKDIR /app
 EXPOSE 8080
-RUN composer install
-RUN printf "\n" | pecl install swoole
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN pecl install --configureoptions 'enable-sockets="no" enable-openssl="no" enable-http2="no" enable-mysqlnd="no" enable-swoole-json="no" enable-swoole-curl="no"' swoole
+RUN echo "extension=swoole.so" >> /etc/php/8.0/cli/php.ini
 RUN npm install
 RUN npm run build
 CMD ["php", "artisan", "octane:start", "-n", "--host=0.0.0.0", "--port=8080"]
