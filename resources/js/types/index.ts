@@ -79,4 +79,6 @@ export type User = {
     updated_at: string /* Date */ | null;
     contents?: Content[] | null;
     comments?: Comment[] | null;
+    first_name?: string;
+    names?: any[];
 };

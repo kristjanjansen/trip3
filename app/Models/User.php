@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $appends = ["first_name", "names"];
     /**
      * The attributes that are mass assignable.
      *
@@ -48,5 +49,21 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany("App\Models\Comment");
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstNameAttribute()
+    {
+        return explode(" ", $this->name)[0];
+    }
+
+    /**
+     * @return array
+     */
+    public function getNamesAttribute()
+    {
+        return explode(" ", $this->name);
     }
 }

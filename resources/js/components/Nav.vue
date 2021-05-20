@@ -12,7 +12,7 @@ const links = [
 </script>
 
 <template>
-    <div class="relative flex justify-between">
+    <div class="relative flex justify-between" dusk="nav">
         <InertiaLink
             href="/"
             class="

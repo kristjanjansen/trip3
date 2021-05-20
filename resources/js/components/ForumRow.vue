@@ -24,7 +24,7 @@ const ago = useTimeAgo(props.content.created_at || new Date());
             >
                 <div class="text-base text-gray-500">{{ __("Postitas") }}</div>
                 <div class="text-base font-medium text-cyan-500">
-                    {{ content.user?.name }}
+                    {{ content.user?.first_name }}
                 </div>
                 <div class="text-base text-gray-500">
                     {{ ago }}
