@@ -69,8 +69,8 @@ RUN command -v npm
 COPY . /app
 WORKDIR /app
 EXPOSE 8080
-RUN composer install swoole
-RUN printf "\n" | pecl install
+RUN composer install
+RUN printf "\n" | pecl install swoole
 RUN npm install
 RUN npm run build
 CMD ["php", "artisan", "octane:start", "-n", "--host=0.0.0.0", "--port=8080"]
