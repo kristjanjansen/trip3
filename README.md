@@ -107,7 +107,7 @@ We support both eager-loaded and lazy-loaded (async) components:
 
 Eager loaded are bundled to the main app bundle and immediately loaded. Use eager-loaded components for simple components that do not have (huge) third-party dependencies.
 
-### Lazy-loaded Vue compoennts
+### Lazy-loaded Vue components
 
 ```
 /resources/js/components_async/*.vue
