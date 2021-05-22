@@ -16,7 +16,13 @@ const page = usePage<{ shared: Shared }>().props.value;
             </div>
             <div class="h-6" />
             <h1
-                class="text-4xl font-bold tracking-tight text-gray-500 lg:text-5xl"
+                class="
+                    text-4xl
+                    font-bold
+                    tracking-tight
+                    text-gray-500
+                    lg:text-5xl
+                "
             >
                 {{ __("Forum") }}
             </h1>
@@ -24,7 +30,14 @@ const page = usePage<{ shared: Shared }>().props.value;
                 <InertiaLink
                     v-for="(link, i) in page.shared.links.footerSecond"
                     :key="link"
-                    class="px-5 py-3 font-bold text-gray-500 whitespace-nowrap text-md"
+                    class="
+                        px-5
+                        py-3
+                        font-bold
+                        text-gray-500
+                        whitespace-nowrap
+                        text-md
+                    "
                     :class="{ 'bg-white text-gray-800': i === 0 }"
                     :href="route(link.route)"
                 >
