@@ -19,7 +19,14 @@ const value = useVModel(props);
             type="text"
             :name="name"
             v-model="value"
-            class="w-full h-48 p-3 text-base border-2 border-gray-400 rounded-sm "
+            class="
+                w-full
+                h-48
+                p-3
+                text-base
+                border-2 border-gray-400
+                rounded-sm
+            "
             :class="{ 'border-red-500': errors?.[name] }"
             :placeholder="placeholder"
             autocapitalize="none"

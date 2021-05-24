@@ -14,7 +14,11 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
+        // For mysql 5.x compatibility see
+        // https://github.com/laravel/framework/issues/33238#issuecomment-758552418
+
         DB::statement("SET SESSION sql_require_primary_key=0");
+
         Schema::create("password_resets", function (Blueprint $table) {
             $table
                 ->string("email")

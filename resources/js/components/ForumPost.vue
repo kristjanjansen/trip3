@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
+import type { Content } from "../types";
+
 defineProps<{ content: Content }>();
 </script>
 

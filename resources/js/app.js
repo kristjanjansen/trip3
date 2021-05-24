@@ -2,7 +2,7 @@ import { createApp, h, defineAsyncComponent } from "vue";
 import { App, plugin } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
 import "../css/app.css";
-import { trans, __ } from "./utils";
+import { trans, __, formatContent, formatDate } from "./utils";
 
 export const components = import.meta.globEager("./components/**/*.vue");
 const asyncComponents = import.meta.glob("./components_async/**/*.vue");
@@ -45,5 +45,7 @@ app.use(plugin);
 app.config.globalProperties.route = route;
 app.config.globalProperties.trans = trans;
 app.config.globalProperties.__ = __;
+app.config.globalProperties.formatContent = formatContent;
+app.config.globalProperties.formatDate = formatDate;
 
 app.mount(el);

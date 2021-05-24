@@ -37,17 +37,15 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            "shared" => [
-                "links" => config("links"),
-                "translations_php" => [
-                    "validation" => trans("validation"),
-                ],
-                "translations_json" => json_decode(
-                    file_get_contents(
-                        resource_path("lang/" . app()->getLocale() . ".json")
-                    )
-                ),
+            "links" => config("links"),
+            "translations_php" => [
+                "validation" => trans("validation"),
             ],
+            "translations_json" => json_decode(
+                file_get_contents(
+                    resource_path("lang/" . app()->getLocale() . ".json")
+                )
+            ),
         ]);
     }
 }

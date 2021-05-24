@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-const props = defineProps<{
-    label?: string;
-    name: string;
-    errors?: Record<string, string>;
-}>();
+const props =
+    defineProps<{
+        label?: string;
+        name: string;
+        errors?: Record<string, string>;
+    }>();
 </script>
 
 <template>
