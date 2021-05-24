@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Content;
-use App\Models\User;
+use App\Content;
+use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContentFactory extends Factory

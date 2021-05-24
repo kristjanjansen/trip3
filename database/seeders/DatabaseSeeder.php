@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Content;
-use App\Models\Comment;
+use App\User;
+use App\Content;
+use App\Comment;
 
 class DatabaseSeeder extends Seeder
 {

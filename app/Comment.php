@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +20,7 @@ class Comment extends Model
      */
     public function content()
     {
-        return $this->belongsTo("App\Models\Content");
+        return $this->belongsTo("App\Content");
     }
 
     /**
@@ -28,6 +28,6 @@ class Comment extends Model
      */
     public function user()
     {
-        return $this->belongsTo("App\Models\User");
+        return $this->belongsTo("App\User");
     }
 }

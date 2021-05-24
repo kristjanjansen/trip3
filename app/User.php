@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,7 +40,7 @@ class User extends Authenticatable
      */
     public function contents()
     {
-        return $this->hasMany("App\Models\Content");
+        return $this->hasMany("App\Content");
     }
 
     /**
@@ -48,6 +48,6 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany("App\Models\Comment");
+        return $this->hasMany("App\Comment");
     }
 }

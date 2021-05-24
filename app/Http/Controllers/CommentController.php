@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Comment;
-use App\Models\User;
+use App\Comment;
+use App\User;
 
 class CommentController extends Controller
 {

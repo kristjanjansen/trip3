@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,13 +18,13 @@ class Content extends Model
      */
     public function user()
     {
-        return $this->belongsTo("App\Models\User");
+        return $this->belongsTo("App\User");
     }
     /**
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {
-        return $this->hasMany("App\Models\Comment");
+        return $this->hasMany("App\Comment");
     }
 }
