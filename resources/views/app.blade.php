@@ -8,7 +8,7 @@
     <link rel="preload" href="/fonts/RegularItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width">
     <title>Trip.ee - {{ $title ?? '' }}</title>
 </head>
 
