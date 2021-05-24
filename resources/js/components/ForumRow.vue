@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { useTimeAgo } from "@vueuse/core";
+import { useFormatAgo } from "../utils";
 import type { Content } from "../types";
 
 const props = defineProps<{ content: Content }>();
-const ago = useTimeAgo(props.content.created_at || new Date());
+const ago = useFormatAgo(props.content.created_at || "");
 </script>
 
 <template>
@@ -43,6 +43,9 @@ const ago = useTimeAgo(props.content.created_at || new Date());
                 </div>
                 <div class="text-base text-gray-500">
                     {{ ago }}
+                </div>
+                <div class="text-base text-gray-500">
+                    {{ formatDate(content.created_at) }}
                 </div>
                 <div class="text-base text-gray-500">
                     {{ content.comments?.length || 0 }} kommentaari

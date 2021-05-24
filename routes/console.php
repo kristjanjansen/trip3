@@ -48,7 +48,7 @@ Artisan::command("generate:types", function () {
 
     $template = <<<END
 import router from "ziggy-js";
-import { trans, __ } from "../helpers";
+import { trans, __, formatContent, formatDate, formatAgo } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {
@@ -56,6 +56,8 @@ declare module "vue" {
         route: typeof router;
         trans: typeof trans;
         __: typeof __;
+        formatContent: typeof formatContent;
+        formatDate: typeof formatDate;
     }
     export interface GlobalComponents {
         InertiaLink: InertiaLink;

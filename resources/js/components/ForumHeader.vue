@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
-import type { Shared } from "../app";
 
-const page = usePage<{ shared: Shared }>().props.value;
+const page = usePage<{ links: any }>().props.value;
 </script>
 
 <template>
