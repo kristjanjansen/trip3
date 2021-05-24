@@ -162,15 +162,17 @@ const hugeCounter = computed(() => counter.value * 1000);
 </script>
 ```
 
-### Vue component helpers
+### JS utility functions
 
-There are several component helpers available:
+There are several utility functions available:
 
 `route()`: for using Laravel named routes
 
 `trans()` and `__()` for translations
 
-**TODO:** `formatDate()` and `formatDateAgo()` for date formatting
+`formatDate()` and `useFormatAgo()` for date formatting
+
+`formatContent()` for content formatting
 
 **TODO:** `loggedUser` / `loggedUserRole` for authenticated use and user authorization.
 
@@ -182,11 +184,11 @@ For component templates, the helpers are globally available:
 </template>
 ```
 
-For component code you will need to import the helper functions first:
+For component code you will need to import the functions first:
 
 ```vue
 <script setup lang="ts">
-import { __ } from "../helpers";
+import { __ } from "../utils";
 
 const greeting = __("Hola");
 </script>
