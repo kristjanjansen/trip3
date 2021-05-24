@@ -14,7 +14,13 @@ const editing = ref(false);
             class="grid gap-4 p-6 border-2 border-gray-200 rounded-sm"
         >
             <div
-                class="flex flex-col items-start gap-3  md:items-center md:flex-row"
+                class="
+                    flex flex-col
+                    items-start
+                    gap-3
+                    md:items-center
+                    md:flex-row
+                "
             >
                 <IconUser class="w-8 h-8 text-gray-200" />
                 <InertiaLink href="" class="text-sm font-medium text-cyan-500">
