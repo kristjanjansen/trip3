@@ -2,7 +2,7 @@ import { createApp, h, defineAsyncComponent } from "vue";
 import { App, plugin } from "@inertiajs/inertia-vue3";
 import route from "ziggy-js";
 import "../css/app.css";
-import { trans, __ } from "./utils";
+import { trans, __ } from "./helpers";
 
 export const components = import.meta.globEager("./components/**/*.vue");
 const asyncComponents = import.meta.glob("./components_async/**/*.vue");

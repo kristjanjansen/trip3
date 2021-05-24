@@ -1,5 +1,5 @@
 import router from "ziggy-js";
-import { trans, __ } from "../utils";
+import { trans, __ } from "../helpers";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {

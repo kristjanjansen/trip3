@@ -1,5 +1,4 @@
 import { usePage } from "@inertiajs/inertia-vue3";
-import type { Shared } from "../app";
 import { get } from "lodash-es";
 
 function replaceTokens(string: string, tokens: Record<string, any>) {
@@ -12,12 +11,12 @@ export function trans(
     lookup: string,
     tokens: Record<string, any> = {}
 ): string {
-    const page = usePage<{ shared: Shared }>().props.value;
-    const translation = get(page.shared.translations_php, lookup);
+    const page = usePage<{ translations_php: any }>().props.value;
+    const translation = get(page.translations_php, lookup);
     return translation ? replaceTokens(translation, tokens) : lookup;
 }
 
 export function __(key: string, tokens: Record<string, any> = {}): string {
-    const page = usePage<{ shared: Shared }>().props.value;
-    return replaceTokens(page.shared.translations_json[key] || key, tokens);
+    const page = usePage<{ translations_json: any }>().props.value;
+    return replaceTokens(page.translations_json[key] || key, tokens);
 }

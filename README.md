@@ -186,7 +186,7 @@ For component code you will need to import the helper functions first:
 
 ```vue
 <script setup lang="ts">
-import { __ } from "../utils";
+import { __ } from "../helpers";
 
 const greeting = __("Hola");
 </script>
