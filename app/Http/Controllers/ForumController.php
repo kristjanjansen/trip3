@@ -8,6 +8,8 @@ class ForumController extends Controller
     public function index()
     {
         $contents = Content::with(["user", "comments"])
+            ->whereIn("type", ["forum", "buysell", "internal", "misc"])
+            ->where("status", 1)
             ->latest()
             ->simplePaginate(15)
             ->withQueryString();

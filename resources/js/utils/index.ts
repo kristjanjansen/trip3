@@ -54,10 +54,12 @@ function format_date($date)
 // @TODO: handle current year
 
 export function formatDate(date: string | Date | null): string {
-    return format(new Date(date || new Date()), "d. LLL Y H:mm", {
+    return format(new Date(date || new Date()), "d. LLL Y HH:mm", {
         locale: et,
     });
 }
+
+// @TODO trans()
 
 const messages: TimeAgoMessages = {
     justNow: "just praegu",

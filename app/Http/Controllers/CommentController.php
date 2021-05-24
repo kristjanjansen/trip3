@@ -16,6 +16,7 @@ class CommentController extends Controller
             ->create([
                 "body" => request()->body,
                 "content_id" => $id,
+                "status" => 1,
             ]);
         return redirect()->route("forum.show", $id);
     }
