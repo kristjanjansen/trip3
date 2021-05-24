@@ -48,7 +48,7 @@ function format_date($date)
 }
 */
 
-// @todo: handle current yeat
+// @TODO: handle current year
 
 export function formatDate(date: string | Date | null): string {
     return format(new Date(date || new Date()), "d. LLL Y H:mm", {
