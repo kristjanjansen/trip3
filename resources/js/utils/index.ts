@@ -30,8 +30,8 @@ export function __(key: string, tokens: Record<string, any> = {}): string {
     return replaceTokens(page.translations_json[key] || key, tokens);
 }
 
-export function formatContent(str: string = ""): string {
-    return marked(str, { breaks: true });
+export function formatContent(str: string | null): string {
+    return marked(str || "", { breaks: true });
 }
 
 /*
