@@ -49,7 +49,7 @@ watch(y, () => {
         <Nav class="p-4" />
         <div class="h-16" />
         <div
-            class="max-w-full p-0 mx-auto space-y-16 md:p-6 md:max-w-screen-md"
+            class="max-w-full p-0 mx-auto space-y-16 md:p-6 md:max-w-screen-lg"
         >
             <div
                 v-for="content in contents"

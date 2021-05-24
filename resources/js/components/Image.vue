@@ -2,12 +2,12 @@
 import { computed, defineProps } from "vue";
 
 const props = defineProps<{ filename: string; title?: string }>();
-const sizes = [420, 640, 768, 1204, 1280, 1536];
+const sizes = [420, 640, 768, 1204 /*1280, 1536*/];
 const url = "https://ik.imagekit.io/6b5jx0ktwr/s3/";
 const image = computed(() => {
     return {
-        src: `${url}${props.filename}?tr=w-${sizes[5]}`,
-        sizes: `(max-width: ${sizes[5]}px) 100vw, ${sizes[5]}px`,
+        src: `${url}${props.filename}?tr=w-${sizes[3]}`,
+        sizes: `(max-width: ${sizes[3]}px) 100vw, ${sizes[3]}px`,
         srcset: sizes
             .map((s) => `${url}${props.filename}?tr=w-${s} ${s}w`)
             .join(","),
@@ -22,5 +22,5 @@ const image = computed(() => {
         :srcset="image.srcset"
         :alt="title || ''"
         loading="lazy"
-    >
+    />
 </template>
