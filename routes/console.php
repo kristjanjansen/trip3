@@ -15,6 +15,19 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
+Artisan::command("migrate:models", function () {
+    DB::table("imageables")
+        ->where("imageable_type", "App\Models\Content")
+        ->update(["imageable_type" => "App\Models\Content"]);
+    DB::table("imageables")
+        ->where("imageable_type", "App\Models\User")
+        ->update(["imageable_type" => "App\Models\User"]);
+    DB::table("viewables")
+        ->where("viewable_type", "App\Models\Content")
+        ->update(["viewable_type" => "App\Models\Content"]);
+});
 
 Artisan::command("generate:types", function () {
     $this->call("types:generate");

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Imageconv;
 use Illuminate\Database\Eloquent\Model;

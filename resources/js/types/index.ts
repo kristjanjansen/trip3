@@ -78,6 +78,16 @@ export type Content = {
     slug: string;
     user?: User | null;
     comments?: Comment[] | null;
+    images?: Image[] | null;
+};
+
+export type Image = {
+    id: number;
+    filename: string;
+    created_at: string /* Date */ | null;
+    updated_at: string /* Date */ | null;
+    content?: Content[] | null;
+    user?: User[] | null;
 };
 
 export type User = {
@@ -107,4 +117,5 @@ export type User = {
     company: boolean;
     contents?: Content[] | null;
     comments?: Comment[] | null;
+    images?: Image[] | null;
 };

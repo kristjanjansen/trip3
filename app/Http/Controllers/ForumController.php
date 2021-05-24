@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Content;
+use App\Models\Content;
 
 class ForumController extends Controller
 {
