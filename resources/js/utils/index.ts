@@ -22,6 +22,9 @@ export function trans(
     return translation ? replaceTokens(translation, tokens) : lookup;
 }
 
+// @TODO trans_choice()
+// https://pineco.de/using-laravels-localization-js/
+
 export function __(key: string, tokens: Record<string, any> = {}): string {
     const page = usePage<{ translations_json: any }>().props.value;
     return replaceTokens(page.translations_json[key] || key, tokens);
