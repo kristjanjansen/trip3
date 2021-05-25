@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { usePage } from "@inertiajs/inertia-vue3";
+
+const page = usePage<{ site: any }>().props.value;
 const showMenu = ref(false);
-const links = [
-    "Lennupakkumised",
-    "Reisikaaslased",
-    "Foorum",
-    "Uudised",
-    "Registreeru",
-    "Logi sisse",
-];
 </script>
 
 <template>
     <div class="relative flex justify-between" dusk="nav">
         <InertiaLink
-            href="/"
+            :href="route('forum.index')"
             class="
                 absolute
                 w-[200px]
@@ -24,21 +19,22 @@ const links = [
             "
         >
             <logo />
-            <h1 class="sr-only">Trip.ee</h1>
+            <h1 class="sr-only">{{ page.site.name }}</h1>
         </InertiaLink>
         <div />
         <div class="items-center hidden space-x-4 lg:flex">
-            <icon-search class="w-5 h-5 text-gray-500" />
+            <IconSearch class="w-5 h-5 text-gray-200" />
             <InertiaLink
-                v-for="link in links"
+                v-for="link in page.site.links.header"
                 :key="link"
-                href="/"
-                class="font-medium text-gray-500 text-md"
+                :href="link.route ? route(link.route) : ''"
+                class="font-medium text-gray-200 text-md"
+                :class="{ 'text-gray-600 hover:text-gray-600': link.route }"
             >
-                {{ link }}
+                {{ link.title }}
             </InertiaLink>
         </div>
-        <icon-menu
+        <IconMenu
             @click="showMenu = true"
             class="block w-6 h-6 text-gray-500 lg:hidden"
         />
@@ -48,18 +44,27 @@ const links = [
                 class="fixed inset-0 p-6 text-white bg-green-500"
             >
                 <div class="flex items-center justify-between">
-                    <icon-search class="w-6 h-6" />
+                    <IconSearch class="w-6 h-6" />
                     <icon-close @click="showMenu = false" class="w-6 h-6" />
                 </div>
                 <div class="h-16" />
                 <div class="grid justify-center gap-8 text-center">
                     <InertiaLink
-                        v-for="link in ['Trip.ee', ...links]"
-                        :key="link"
-                        href="/"
+                        :href="route('forum.index')"
                         class="text-xl font-medium"
                     >
-                        {{ link }}
+                        Trip.ee
+                    </InertiaLink>
+                    <InertiaLink
+                        v-for="link in page.site.links.header"
+                        :key="link"
+                        :href="link.route ? route(link.route) : ''"
+                        class="text-gray-200"
+                        :class="{
+                            'text-gray-500 hover:text-gray-600': link.route,
+                        }"
+                    >
+                        {{ __(link.title) }}
                     </InertiaLink>
                 </div>
             </div>

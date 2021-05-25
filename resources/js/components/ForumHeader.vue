@@ -6,9 +6,6 @@ const page = usePage<{ site: any }>().props.value;
 
 <template>
     <div class="relative p-6 pb-0 overflow-hidden bg-gray-100 lg:px-0 lg:pt-10">
-        <!-- <background-map
-            class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
-        /> -->
         <div class="container inset-0 grid gap-6 lg:mx-auto">
             <Nav />
             <div class="h-6" />

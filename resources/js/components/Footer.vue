@@ -20,7 +20,7 @@ const page = usePage<{ site: any }>().props.value;
             "
         >
             <InertiaLink
-                :href="route(page.site.links.index.route)"
+                :href="route('forum.index')"
                 class="flex justify-center md:justify-start"
             >
                 <logo-plain class="h-6 text-gray-600" />
@@ -29,8 +29,11 @@ const page = usePage<{ site: any }>().props.value;
                 <InertiaLink
                     v-for="link in page.site.links.footerFirst"
                     :key="link"
-                    :href="route(link.route)"
-                    class="text-base font-medium text-gray-600"
+                    :href="link.route ? route(link.route) : ''"
+                    class="text-base font-medium text-gray-200"
+                    :class="{
+                        'text-gray-600 hover:text-gray-700': link.route,
+                    }"
                 >
                     {{ __(link.title) }}
                 </InertiaLink>
@@ -39,8 +42,11 @@ const page = usePage<{ site: any }>().props.value;
                 <InertiaLink
                     v-for="link in page.site.links.footerSecond"
                     :key="link"
-                    :href="route(link.route)"
-                    class="text-base font-medium text-gray-600"
+                    :href="link.route ? route(link.route) : ''"
+                    class="text-base font-medium text-gray-200"
+                    :class="{
+                        'text-gray-600 hover:text-gray-700': link.route,
+                    }"
                 >
                     {{ __(link.title) }}
                 </InertiaLink>
@@ -49,8 +55,11 @@ const page = usePage<{ site: any }>().props.value;
                 <InertiaLink
                     v-for="link in page.site.links.footerThird"
                     :key="link"
-                    :href="route(link.route)"
-                    class="text-base font-medium text-gray-600"
+                    :href="link.route ? route(link.route) : ''"
+                    class="text-base font-medium text-gray-200"
+                    :class="{
+                        'text-gray-600 hover:text-gray-700': link.route,
+                    }"
                 >
                     {{ __(link.title) }}
                 </InertiaLink>
@@ -62,17 +71,20 @@ const page = usePage<{ site: any }>().props.value;
         >
             <InertiaLink
                 v-for="link in page.site.links.footerSocial"
-                :link="link"
-                :href="route(link.route)"
-                class="flex items-center gap-2 text-sm text-gray-600"
+                :key="link"
+                :href="link.route ? route(link.route) : ''"
+                class="flex items-center gap-2 text-gray-200"
+                :class="{
+                    'text-gray-600 hover:text-gray-700': link.route,
+                }"
             >
-                <IconRss class="hidden w-4 h-4 text-gray-600 md:block" />
+                <IconRss class="hidden w-4 h-4 md:block" />
                 <div class="text-base font-medium">{{ __(link.title) }}</div>
             </InertiaLink>
         </div>
         <div class="h-12" />
         <div class="text-base text-center text-gray-400">
-            {{ __("Copyright") }} © {{ page.site.links.index.title }} 1998-{{
+            {{ __("Copyright") }} © {{ page.site.name }} 1998-{{
                 new Date().getFullYear()
             }}
         </div>

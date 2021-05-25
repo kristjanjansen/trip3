@@ -17,7 +17,7 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get("/", [ForumController::class, "index"])->name("forum.index");
-Route::get("/photo", [PhotoController::class, "index"])->name("photo.show");
+Route::get("/photo", [PhotoController::class, "index"])->name("photo.index");
 Route::get("/forum/{id}", [ForumController::class, "show"])->name("forum.show");
 Route::post("/comment/{id}", [CommentController::class, "store"])->name(
     "comment.store"
