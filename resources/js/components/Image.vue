@@ -10,7 +10,7 @@ const page =
     }>().props.value;
 
 const breakpoints = [480, 640, 768, 1204, 1280, 1536];
-const sizes = props.narrow ? breakpoints.slice(0, 4) : breakpoints;
+const sizes = props.narrow ? breakpoints.slice(0, 3) : breakpoints;
 const image = computed(() => {
     return {
         src: `${page.site.image_cdn}/${props.filename}?tr=w-${sizes.slice(-1)}`,

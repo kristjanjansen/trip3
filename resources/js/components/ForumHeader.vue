@@ -5,9 +5,11 @@ const page = usePage<{ site: any }>().props.value;
 </script>
 
 <template>
-    <div class="relative overflow-hidden bg-gray-100">
-        <div class="max-w-screen-xl p-0 mx-auto md:p-6 md:pb-0">
+    <div class="bg-gray-100">
+        <div class="max-w-screen-xl mx-auto">
             <Nav />
+        </div>
+        <div class="max-w-screen-lg mx-auto p-6 pb-0">
             <div class="h-6" />
             <h1
                 class="

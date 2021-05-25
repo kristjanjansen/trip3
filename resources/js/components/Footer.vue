@@ -4,10 +4,11 @@ import { usePage } from "@inertiajs/inertia-vue3";
 const page = usePage<{ site: any }>().props.value;
 </script>
 <template>
-    <div class="pt-12 pb-24 pl-6 pr-6 bg-gray-100">
+    <div class="pt-12 pb-24 px-6 bg-gray-100">
         <div
             class="
-                container
+                max-w-screen-xl
+                mx-auto
                 grid
                 justify-center
                 gap-4

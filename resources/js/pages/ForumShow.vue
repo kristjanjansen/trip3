@@ -8,7 +8,7 @@ const page = usePage<{ content: Content }>().props.value;
 <template>
     <div>
         <ForumHeader />
-        <div class="p-6 pt-12 lg:container lg:mx-auto bg-gray-50">
+        <div class="p-6 max-w-screen-lg mx-auto">
             <div class="h-12" />
             <ForumPost :content="page.content" />
             <div v-if="page.content.comments" class="h-12" />

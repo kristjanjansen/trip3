@@ -17,7 +17,7 @@ const page =
         <ForumHeader />
         <div class="p-6 pt-12 lg:container lg:mx-auto bg-gray-50">
             <div class="h-12" />
-            <div class="grid gap-8">
+            <div class="max-w-screen-lg mx-auto grid gap-8 px-0 md:px-6">
                 <ForumRow
                     v-for="(content, i) in page.contents.data"
                     :key="i"

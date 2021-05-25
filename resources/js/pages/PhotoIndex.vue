@@ -39,10 +39,10 @@ watch(y, () => {
 </script>
 
 <template>
-    <div class="max-w-screen-xl p-0 mx-auto md:p-6">
+    <div class="max-w-screen-xl mx-auto">
         <Nav />
         <div class="h-16" />
-        <div class="space-y-12">
+        <div class="space-y-12 max-w-screen-md mx-auto">
             <div
                 v-for="content in contents"
                 :key="content.id"

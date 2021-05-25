@@ -1,10 +1,9 @@
 <template>
     <div>
-        <div class="max-w-screen-xl p-0 mx-auto md:p-6 screen">
-            <Image filename="header.jpg" class="absolute inset-0" />
+        <div class="max-w-screen-xl mx-auto">
             <Nav />
-            <div class="min-h-screen" />
         </div>
+        <Image filename="header.jpg" class="object-cover h-64 w-full" />
         <Footer />
     </div>
 </template>

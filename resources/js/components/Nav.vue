@@ -7,7 +7,7 @@ const showMenu = ref(false);
 </script>
 
 <template>
-    <div class="relative flex justify-between p-4" dusk="nav">
+    <div class="relative flex justify-between p-6" dusk="nav">
         <InertiaLink
             :href="route('homepage.index')"
             class="
@@ -36,7 +36,7 @@ const showMenu = ref(false);
         </div>
         <IconMenu
             @click="showMenu = true"
-            class="block w-6 h-6 text-gray-500 lg:hidden"
+            class="w-6 h-6 text-gray-500 lg:hidden"
         />
         <teleport to="body">
             <div
