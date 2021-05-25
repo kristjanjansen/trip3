@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
 
-const page = usePage<{ links: any }>().props.value;
+const page = usePage<{ site: any }>().props.value;
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const page = usePage<{ links: any }>().props.value;
             </h1>
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <InertiaLink
-                    v-for="(link, i) in page.links.footerSecond"
+                    v-for="(link, i) in page.site.links.footerSecond"
                     :key="link"
                     class="
                         px-5

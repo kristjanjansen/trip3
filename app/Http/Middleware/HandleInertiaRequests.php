@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             "links" => config("links"),
+            "site" => config("site"),
             "translations_php" => [
                 "validation" => trans("validation"),
             ],
