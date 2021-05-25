@@ -9,7 +9,7 @@ const showMenu = ref(false);
 <template>
     <div class="relative flex justify-between p-4" dusk="nav">
         <InertiaLink
-            :href="route('forum.index')"
+            :href="route('homepage.index')"
             class="
                 absolute
                 w-[200px]
@@ -50,10 +50,10 @@ const showMenu = ref(false);
                 <div class="h-16" />
                 <div class="grid justify-center gap-8 text-center">
                     <InertiaLink
-                        :href="route('forum.index')"
+                        :href="route('homepage.index')"
                         class="text-xl font-medium"
                     >
-                        Trip.ee
+                        {{ page.site.name }}
                     </InertiaLink>
                     <InertiaLink
                         v-for="link in page.site.links.header"
