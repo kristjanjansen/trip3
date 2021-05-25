@@ -40,17 +40,29 @@ watch(y, () => {
 
 <template>
     <div class="max-w-screen-xl p-0 mx-auto md:p-6">
-        <Nav class="p-4" />
+        <Nav />
         <div class="h-16" />
         <div
-            class="max-w-full p-0 mx-auto space-y-16 md:p-6 md:max-w-screen-lg"
+            class="
+                max-w-full
+                mx-auto
+                space-y-16
+                md:max-w-screen-lg
+                h-16
+                bg-red-500
+                p-6
+                md:p-0
+            "
         >
             <div
                 v-for="content in contents"
                 :key="content.id"
                 class="space-y-2"
             >
-                <Image :filename="content?.images?.[0].filename || ''" />
+                <Image
+                    :filename="content?.images?.[0].filename || ''"
+                    :narrow="true"
+                />
                 <figcaption class="px-4 md:px-0">
                     {{ content.title }}
                 </figcaption>

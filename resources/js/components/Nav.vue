@@ -7,7 +7,7 @@ const showMenu = ref(false);
 </script>
 
 <template>
-    <div class="relative flex justify-between" dusk="nav">
+    <div class="relative flex justify-between p-4" dusk="nav">
         <InertiaLink
             :href="route('forum.index')"
             class="
