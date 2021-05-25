@@ -32,10 +32,13 @@ const page = usePage<{ site: any }>().props.value;
                         whitespace-nowrap
                         text-md
                     "
-                    :class="{ 'bg-white text-gray-800': i === 0 }"
+                    :class="{
+                        'bg-white text-gray-800':
+                            route().current() === link.route,
+                    }"
                     :href="route(link.route)"
                 >
-                    {{ link.title }}
+                    {{ __(link.title) }}
                 </InertiaLink>
             </div>
         </div>

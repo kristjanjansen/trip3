@@ -5,12 +5,12 @@ return [
     "image_path_original" => env("IMAGE_CDN", "") . "/original/",
     "image_path_site" => env("IMAGE_CDN", "") . "/site/",
     "links" => [
-        "index" => ["title" => "Trip.ee", "route" => "forum.index"],
+        "index" => ["title" => "Trip.ee", "route" => "homepage.index"],
         "header" => [
             ["title" => "Flight offers", "route" => ""],
             ["title" => "Travelmates", "route" => ""],
             ["title" => "News", "route" => ""],
-            ["title" => "Forum", "route" => "forum.index"],
+            ["title" => "Forum", "route" => "forum.index.general"],
             ["title" => "Photos", "route" => "photo.index"],
             ["title" => "My Trip.ee", "route" => ""],
         ],
@@ -23,10 +23,10 @@ return [
             ["title" => "Destinations", "route" => ""],
         ],
         "footerSecond" => [
-            ["title" => "General forum", "route" => "forum.index"],
-            ["title" => "Buy and sell", "route" => "forum.index"],
-            ["title" => "Expats", "route" => "forum.index"],
-            ["title" => "Misc", "route" => "forum.index"],
+            ["title" => "General forum", "route" => "forum.index.general"],
+            ["title" => "Buy and sell", "route" => "forum.index.buysell"],
+            ["title" => "Expats", "route" => "forum.index.expat"],
+            ["title" => "Misc", "route" => "forum.index.misc"],
         ],
         "footerThird" => [
             ["title" => "About", "route" => ""],

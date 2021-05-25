@@ -5,10 +5,30 @@ use App\Models\Content;
 
 class ForumController extends Controller
 {
-    public function index()
+    public function indexGeneral()
+    {
+        return $this->index("forum");
+    }
+
+    public function indexBuysell()
+    {
+        return $this->index("buysell");
+    }
+
+    public function indexExpat()
+    {
+        return $this->index("expat");
+    }
+
+    public function indexMisc()
+    {
+        return $this->index("misc");
+    }
+
+    public function index($type)
     {
         $contents = Content::with(["user", "comments"])
-            ->whereIn("type", ["forum", "buysell", "internal", "misc"])
+            ->where("type", $type)
             ->where("status", 1)
             ->latest()
             ->simplePaginate(15)
