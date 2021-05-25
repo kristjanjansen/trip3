@@ -38,6 +38,7 @@ declare module "vue" {
         IconThumbsup: typeof import("../components/IconThumbsup.vue").default;
         IconTwitter: typeof import("../components/IconTwitter.vue").default;
         IconUser: typeof import("../components/IconUser.vue").default;
+        Image: typeof import("../components/Image.vue").default;
         Logo: typeof import("../components/Logo.vue").default;
         LogoPlain: typeof import("../components/LogoPlain.vue").default;
         Nav: typeof import("../components/Nav.vue").default;

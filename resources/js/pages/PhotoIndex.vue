@@ -17,12 +17,6 @@ const page =
 const { y } = useWindowScroll();
 const contents = ref(page.props.value.contents.data);
 
-watch(
-    () => page.props,
-    () => console.log(page.props.value.contents),
-    { immediate: true }
-);
-
 watch(y, () => {
     if (window.innerHeight + y.value >= document.body.scrollHeight) {
         if (page.props.value.contents.next_page_url) {
@@ -32,7 +26,7 @@ watch(y, () => {
                 {
                     preserveScroll: true,
                     preserveState: true,
-                    //  only: ["contents"],
+                    only: ["contents"],
                 }
             );
             contents.value = [
@@ -56,7 +50,7 @@ watch(y, () => {
                 :key="content.id"
                 class="space-y-2"
             >
-                <Image :filename="content?.images?.[0].filename" />
+                <Image :filename="content?.images?.[0].filename || ''" />
                 <figcaption class="px-4 md:px-0">
                     {{ content.title }}
                 </figcaption>

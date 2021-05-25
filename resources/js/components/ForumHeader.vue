@@ -10,9 +10,7 @@ const page = usePage<{ site: any }>().props.value;
             class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
         /> -->
         <div class="container inset-0 grid gap-6 lg:mx-auto">
-            <div class="h-6">
-                <transition name="fade"><Nav /></transition>
-            </div>
+            <Nav />
             <div class="h-6" />
             <h1
                 class="

@@ -1,7 +1,8 @@
 <?php
 
 return [
-    "image_cdn" => env("IMAGE_CDN", ""),
+    "image_path_original" => env("IMAGE_CDN", "") . "/original",
+    "image_path_site" => env("IMAGE_CDN", "") . "/site",
     "links" => [
         "index" => ["title" => "Trip.ee", "route" => "forum.index"],
         "footerFirst" => [
