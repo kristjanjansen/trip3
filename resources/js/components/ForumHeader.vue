@@ -5,8 +5,8 @@ const page = usePage<{ site: any }>().props.value;
 </script>
 
 <template>
-    <div class="relative p-6 pb-0 overflow-hidden bg-gray-100 lg:px-0 lg:pt-10">
-        <div class="container inset-0 grid gap-6 lg:mx-auto">
+    <div class="relative overflow-hidden bg-gray-100">
+        <div class="max-w-screen-xl p-0 mx-auto md:p-6 md:pb-0">
             <Nav />
             <div class="h-6" />
             <h1
@@ -20,6 +20,7 @@ const page = usePage<{ site: any }>().props.value;
             >
                 {{ __("Forum") }}
             </h1>
+            <div class="h-6" />
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <InertiaLink
                     v-for="(link, i) in page.site.links.footerSecond"
@@ -29,11 +30,12 @@ const page = usePage<{ site: any }>().props.value;
                         py-3
                         font-bold
                         text-gray-500
+                        hover:text-gray-600
                         whitespace-nowrap
                         text-md
                     "
                     :class="{
-                        'bg-white text-gray-800':
+                        'bg-white text-gray-800 hover:text-gray-900':
                             route().current() === link.route,
                     }"
                     :href="route(link.route)"

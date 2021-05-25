@@ -2,8 +2,7 @@
 
 return [
     "name" => "Trip.ee",
-    "image_path_original" => env("IMAGE_CDN", "") . "/original/",
-    "image_path_site" => env("IMAGE_CDN", "") . "/site/",
+    "image_cdn" => env("IMAGE_CDN", ""),
     "links" => [
         "index" => ["title" => "Trip.ee", "route" => "homepage.index"],
         "header" => [
