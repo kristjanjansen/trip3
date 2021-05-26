@@ -15,10 +15,11 @@ const page =
         <div class="max-w-screen-xl mx-auto">
             <Nav />
         </div>
-        <div class="relative bg-orange-500 max-h-[500px] overflow-hidden">
+        <div class="relative bg-orange-500 overflow-hidden">
             <Image
                 :filename="page.content?.images?.[0].filename || ''"
-                class="inset-0 object-fit"
+                :height="600"
+                class="h-[500px] md:h-[600px] w-full object-cover"
             />
             <div class="absolute inset-0 bg-black opacity-30" />
             <div class="absolute inset-0">
@@ -42,6 +43,7 @@ const page =
                                 font-bold
                                 text-3xl
                                 md:text-4xl
+                                xl:text-5xl
                                 tracking-tight
                                 max-w-[720px]
                             "
@@ -55,7 +57,7 @@ const page =
                 </div>
             </div>
         </div>
-        <div class="h-12" />
+        <div class="h-2 md:h-12" />
         <div class="max-w-screen-md mx-auto p-6 lg:p-0 lg:pb-6">
             <div
                 class="prose lg:prose-lg max-w-none prose-blue"

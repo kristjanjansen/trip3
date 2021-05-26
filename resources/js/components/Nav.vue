@@ -59,10 +59,7 @@ const showMenu = ref(false);
                         v-for="link in page.site.links.header"
                         :key="link"
                         :href="link.route ? route(link.route) : ''"
-                        class="text-xl font-medium text-green-400"
-                        :class="{
-                            'text-white hover:text-green-100': link.route,
-                        }"
+                        class="text-xl font-medium text-white"
                         :role="link.route ? '' : 'presentation'"
                     >
                         {{ __(link.title) }}

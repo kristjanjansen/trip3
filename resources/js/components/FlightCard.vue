@@ -7,7 +7,7 @@ const props = defineProps<{ content: Content }>();
 
 <template>
     <InertiaLink
-        class="relative group"
+        class="relative group bg-gray-100"
         :href="route('flight.show', content.id)"
     >
         <Image

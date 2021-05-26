@@ -41,21 +41,45 @@ watch(y, () => {
 <template>
     <div class="max-w-screen-xl mx-auto">
         <Nav />
-        <div class="h-16" />
-        <div class="space-y-12 max-w-screen-md mx-auto">
+        <div class="h-12" />
+        <div class="space-y-16 max-w-screen-md mx-auto">
+            <h1
+                class="
+                    text-4xl
+                    font-bold
+                    tracking-tight
+                    text-gray-700
+                    lg:text-5xl
+                    text-left
+                    md:text-center
+                    px-4
+                    md:px-0
+                "
+            >
+                {{ __("Photos") }}
+            </h1>
             <div
                 v-for="content in contents"
                 :key="content.id"
-                class="space-y-2"
+                class="space-y-4"
             >
                 <Image
                     :filename="content?.images?.[0].filename || ''"
                     width="md"
                     :alt="content.title || ''"
                 />
-                <figcaption class="px-4 md:px-0">
+                <figcaption class="px-4 md:px-0 text-base text-gray-600">
                     {{ content.title }}
                 </figcaption>
+                <div class="px-4 md:px-0 flex space-x-3 items-center">
+                    <IconUser class="w-8 h-8 text-gray-200" />
+                    <InertiaLink
+                        href=""
+                        class="text-sm font-medium text-cyan-500"
+                    >
+                        {{ content.user?.name }}
+                    </InertiaLink>
+                </div>
             </div>
         </div>
     </div>

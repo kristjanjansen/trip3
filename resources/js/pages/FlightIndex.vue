@@ -18,13 +18,32 @@ const page =
     <div>
         <div class="max-w-screen-xl mx-auto">
             <Nav />
-            <div class="h-16" />
+        </div>
+        <div class="max-w-screen-lg mx-auto">
+            <h1
+                class="
+                    text-4xl
+                    font-bold
+                    tracking-tight
+                    text-gray-700
+                    lg:text-5xl
+                    px-6
+                    md:px-0
+                    py-12
+                    text-left
+                    md:text-center
+                    break-words
+                "
+            >
+                {{ __("Flight offers") }}
+            </h1>
             <div
                 class="
-                    max-w-screen-lg
-                    mx-auto
-                    grid grid-cols-3
-                    gap-4
+                    grid
+                    lg:grid-cols-3
+                    grid-cols-1
+                    gap-0
+                    md:gap-4
                     auto-rows-max
                 "
             >

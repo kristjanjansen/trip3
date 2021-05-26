@@ -6,19 +6,6 @@ const page = usePage<{ site: any }>().props.value;
 
 <template>
     <header class="bg-gray-100 relative overflow-hidden">
-        <Image
-            filename="map.png"
-            width="md"
-            class="
-                -my-[200px]
-                max-w-none
-                absolute
-                inset-0
-                opacity-5
-                pointer-events-none
-                mix-blend-multiply
-            "
-        />
         <div class="max-w-screen-xl mx-auto">
             <Nav />
         </div>
