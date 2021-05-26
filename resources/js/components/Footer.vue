@@ -21,7 +21,7 @@ const page = usePage<{ site: any }>().props.value;
             "
         >
             <InertiaLink
-                :href="route('homepage.index')"
+                :href="route('frontpage.index')"
                 class="flex justify-center md:justify-start"
             >
                 <logo-plain class="h-6 text-gray-600" />

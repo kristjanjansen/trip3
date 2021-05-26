@@ -4,7 +4,7 @@ return [
     "name" => "Trip.ee",
     "image_cdn" => env("IMAGE_CDN", ""),
     "links" => [
-        "index" => ["title" => "Trip.ee", "route" => "homepage.index"],
+        "index" => ["title" => "Trip.ee", "route" => "frontpage.index"],
         "header" => [
             ["title" => "Flight offers", "route" => ""],
             ["title" => "Travelmates", "route" => ""],

@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CommentController;
 
-Route::get("/", [HomepageController::class, "index"])->name("homepage.index");
+Route::get("/", [FrontpageController::class, "index"])->name("frontpage.index");
 Route::get("/photo", [PhotoController::class, "index"])->name("photo.index");
 Route::get("/forum/general", [ForumController::class, "indexGeneral"])->name(
     "forum.index.general"

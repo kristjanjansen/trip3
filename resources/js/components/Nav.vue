@@ -9,7 +9,7 @@ const showMenu = ref(false);
 <template>
     <div class="relative flex justify-between p-6" dusk="nav">
         <InertiaLink
-            :href="route('homepage.index')"
+            :href="route('frontpage.index')"
             class="
                 absolute
                 w-[200px]
@@ -50,7 +50,7 @@ const showMenu = ref(false);
                 <div class="h-16" />
                 <div class="grid justify-center gap-8 text-center">
                     <InertiaLink
-                        :href="route('homepage.index')"
+                        :href="route('frontpage.index')"
                         class="text-xl font-medium"
                     >
                         {{ page.site.name }}

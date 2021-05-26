@@ -7,6 +7,7 @@ const props =
         filename: string;
         title?: string;
         narrow?: boolean;
+        /** Image height. Between 0 and 1 it means percentage, over 1 it's pixels */
         height?: number;
     }>();
 const page =
