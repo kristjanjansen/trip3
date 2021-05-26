@@ -15,7 +15,7 @@ const page =
         <div class="max-w-screen-xl mx-auto">
             <Nav />
         </div>
-        <div class="relative bg-orange-500 overflow-hidden">
+        <div class="relative bg-gray-100 overflow-hidden">
             <Image
                 :filename="page.content?.images?.[0].filename || ''"
                 :height="600"
@@ -36,7 +36,7 @@ const page =
                         lg:pb-12
                     "
                 >
-                    <div class="space-y-12">
+                    <div class="space-y-6 md:space-y-12">
                         <h2
                             class="
                                 text-white

@@ -61,7 +61,7 @@ Artisan::command("generate:types", function () {
 
     $template = <<<END
 import router from "ziggy-js";
-import { trans, __, formatContent, formatDate, formatAgo } from "../utils";
+import { trans, __, formatContent, formatDate } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {
