@@ -93,3 +93,12 @@ const messages: TimeAgoMessages = {
 export function useFormatAgo(str: string | null) {
     return useTimeAgo(str || new Date(), { messages });
 }
+
+export function sliceByKey(obj: object, key: string): object {
+    if (Object.keys(obj).includes(key)) {
+        const i = Object.keys(obj).findIndex((k) => k === key);
+        return Object.fromEntries(Object.entries(obj).slice(0, i + 1));
+    } else {
+        return obj;
+    }
+}
