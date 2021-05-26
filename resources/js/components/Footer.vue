@@ -4,7 +4,7 @@ import { usePage } from "@inertiajs/inertia-vue3";
 const page = usePage<{ site: any }>().props.value;
 </script>
 <template>
-    <div class="pt-12 pb-24 px-6 bg-gray-100">
+    <footer class="pt-12 pb-24 px-6 bg-gray-100">
         <div
             class="
                 max-w-screen-xl
@@ -24,37 +24,16 @@ const page = usePage<{ site: any }>().props.value;
                 :href="route('frontpage.index')"
                 class="flex justify-center md:justify-start"
             >
+                <div class="sr-only">{{ page.site.name }}</div>
                 <logo-plain class="h-6 text-gray-600" />
             </InertiaLink>
-            <div class="grid gap-6 auto-rows-max">
+            <div
+                v-for="col in ['footerFirst', 'footerSecond', 'footerThird']"
+                :key="col"
+                class="grid gap-6 auto-rows-max"
+            >
                 <InertiaLink
-                    v-for="link in page.site.links.footerFirst"
-                    :key="link"
-                    :href="link.route ? route(link.route) : ''"
-                    class="text-base font-medium text-gray-200"
-                    :class="{
-                        'text-gray-600 hover:text-gray-700': link.route,
-                    }"
-                >
-                    {{ __(link.title) }}
-                </InertiaLink>
-            </div>
-            <div class="grid gap-6 auto-rows-max">
-                <InertiaLink
-                    v-for="link in page.site.links.footerSecond"
-                    :key="link"
-                    :href="link.route ? route(link.route) : ''"
-                    class="text-base font-medium text-gray-200"
-                    :class="{
-                        'text-gray-600 hover:text-gray-700': link.route,
-                    }"
-                >
-                    {{ __(link.title) }}
-                </InertiaLink>
-            </div>
-            <div class="grid gap-6 auto-rows-max">
-                <InertiaLink
-                    v-for="link in page.site.links.footerThird"
+                    v-for="link in page.site.links[col]"
                     :key="link"
                     :href="link.route ? route(link.route) : ''"
                     class="text-base font-medium text-gray-200"
@@ -89,5 +68,5 @@ const page = usePage<{ site: any }>().props.value;
                 new Date().getFullYear()
             }}
         </div>
-    </div>
+    </footer>
 </template>

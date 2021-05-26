@@ -1,4 +1,4 @@
-import type { ComputedRef } from "vue";
+import { computed, ComputedRef } from "vue";
 import { usePage } from "@inertiajs/inertia-vue3";
 import { get } from "lodash-es";
 import marked from "marked";
@@ -31,7 +31,8 @@ export function __(key: string, tokens: Record<string, any> = {}): string {
 }
 
 export function formatContent(str: string | null): string {
-    return marked(str || "", { breaks: true });
+    const cleanedStr = str?.replace(/\[\[.*]\]/gm, "");
+    return marked(cleanedStr || "", { breaks: true });
 }
 
 /*
@@ -102,3 +103,31 @@ export function sliceByKey(obj: object, key: string): object {
         return obj;
     }
 }
+
+/*
+
+    const isNumericWidth = props.width && typeof props.width === "number";
+    const width = isNumericWidth ? props.width : widths.slice(-1)[0];
+    const heightTransform = props.height ? `,h-${props.height}` : "";
+    const height = props.height
+        ? props.height <= 1
+            ? Math.floor(width * props.height)
+            : props.height
+        : "";
+    return {
+        src: `${page.site.image_cdn}/${props.filename}?tr=w-${width}${heightTransform}`,
+        sizes: !isNumericWidth
+            ? `(max-width: ${width}px) 100vw, ${width}px`
+            : "",
+        srcset: !isNumericWidth
+            ? widths
+                  .map(
+                      (s) =>
+                          `${page.site.image_cdn}/${props.filename}?tr=w-${s}${heightTransform} ${s}w`
+                  )
+                  .join(",")
+            : ,
+        width,
+        height,
+    };
+    */

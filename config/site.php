@@ -8,7 +8,7 @@ return [
     "links" => [
         "index" => ["title" => "Trip.ee", "route" => "frontpage.index"],
         "header" => [
-            ["title" => "Flight offers", "route" => ""],
+            ["title" => "Flight offers", "route" => "flight.index"],
             ["title" => "Travelmates", "route" => ""],
             ["title" => "News", "route" => ""],
             ["title" => "Forum", "route" => "forum.index.general"],
@@ -16,7 +16,7 @@ return [
             ["title" => "My Trip.ee", "route" => ""],
         ],
         "footerFirst" => [
-            ["title" => "Flight offers", "route" => ""],
+            ["title" => "Flight offers", "route" => "flight.index"],
             ["title" => "Travelmates", "route" => ""],
             ["title" => "News", "route" => ""],
             ["title" => "Blogs", "route" => ""],

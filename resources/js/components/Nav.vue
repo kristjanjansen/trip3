@@ -7,7 +7,7 @@ const showMenu = ref(false);
 </script>
 
 <template>
-    <div class="relative flex justify-between p-6" dusk="nav">
+    <nav class="relative flex justify-between p-6" dusk="nav">
         <InertiaLink
             :href="route('frontpage.index')"
             class="
@@ -63,11 +63,12 @@ const showMenu = ref(false);
                         :class="{
                             'text-white hover:text-green-100': link.route,
                         }"
+                        :role="link.route ? '' : 'presentation'"
                     >
                         {{ __(link.title) }}
                     </InertiaLink>
                 </div>
             </div>
         </teleport>
-    </div>
+    </nav>
 </template>

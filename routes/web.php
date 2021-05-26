@@ -5,8 +5,13 @@ use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FlightController;
 
 Route::get("/", [FrontpageController::class, "index"])->name("frontpage.index");
+Route::get("/flight/{id}", [FlightController::class, "show"])->name(
+    "flight.show"
+);
+Route::get("/flight", [FlightController::class, "index"])->name("flight.index");
 Route::get("/photo", [PhotoController::class, "index"])->name("photo.index");
 Route::get("/forum/general", [ForumController::class, "indexGeneral"])->name(
     "forum.index.general"

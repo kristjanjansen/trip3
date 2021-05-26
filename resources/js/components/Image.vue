@@ -28,25 +28,34 @@ const sizes =
 const widths = Object.values(sizes);
 
 const image = computed(() => {
-    const width =
-        props.width && typeof props.width === "number"
-            ? props.width
-            : widths.slice(-1)[0];
+    const isNumericWidth = props.width && typeof props.width === "number";
+    const width = isNumericWidth ? props.width : widths.slice(-1)[0];
     const heightTransform = props.height ? `,h-${props.height}` : "";
     const height = props.height
         ? props.height <= 1
-            ? width * props.height
+            ? Math.floor(width * props.height)
             : props.height
         : "";
     return {
         src: `${page.site.image_cdn}/${props.filename}?tr=w-${width}${heightTransform}`,
-        sizes: `(max-width: ${width}px) 100vw, ${width}px`,
-        srcset: widths
-            .map(
-                (s) =>
-                    `${page.site.image_cdn}/${props.filename}?tr=w-${s}${heightTransform} ${s}w`
-            )
-            .join(","),
+        sizes: !isNumericWidth
+            ? `(max-width: ${width}px) 100vw, ${width}px`
+            : "",
+        srcset: !isNumericWidth
+            ? widths
+                  .map(
+                      (s) =>
+                          `${page.site.image_cdn}/${props.filename}?tr=w-${s}${heightTransform} ${s}w`
+                  )
+                  .join(",")
+            : [1, 2]
+                  .map(
+                      (s) =>
+                          `${page.site.image_cdn}/${props.filename}?tr=w-${
+                              s * width
+                          },h-${height ? s * height : ""} ${s}x`
+                  )
+                  .join(","),
         width,
         height,
     };
@@ -63,5 +72,6 @@ const image = computed(() => {
         :height="image.height"
         loading="lazy"
         decoding="async"
+        class="block w-full"
     />
 </template>

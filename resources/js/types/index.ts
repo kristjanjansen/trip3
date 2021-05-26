@@ -21,6 +21,7 @@ declare module "vue" {
         CommentEditForm: typeof import("../components/CommentEditForm.vue").default;
         Comments: typeof import("../components/Comments.vue").default;
         FieldLayout: typeof import("../components/FieldLayout.vue").default;
+        FlightCard: typeof import("../components/FlightCard.vue").default;
         Footer: typeof import("../components/Footer.vue").default;
         FormTextarea: typeof import("../components/FormTextarea.vue").default;
         FormTextfield: typeof import("../components/FormTextfield.vue").default;
