@@ -39,8 +39,9 @@ const page =
                         <h2
                             class="
                                 text-white
-                                font-medium
-                                text-4xl
+                                font-bold
+                                text-3xl
+                                md:text-4xl
                                 tracking-tight
                                 max-w-[720px]
                             "
