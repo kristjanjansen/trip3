@@ -3,22 +3,30 @@ import { computed, defineProps } from "vue";
 import { usePage } from "@inertiajs/inertia-vue3";
 
 const props =
-    defineProps<{ filename: string; title?: string; narrow?: boolean }>();
+    defineProps<{
+        filename: string;
+        title?: string;
+        narrow?: boolean;
+        height?: number;
+    }>();
 const page =
     usePage<{
         site: any;
     }>().props.value;
 
-const breakpoints = [480, 640, 768, 1204, 1280, 1536];
-const sizes = props.narrow ? breakpoints.slice(0, 3) : breakpoints;
+const breakpoints = [640, 768, 1204, 1280, 1536];
+const sizes = props.narrow ? breakpoints.slice(0, 2) : breakpoints;
 const image = computed(() => {
+    const maxSize = sizes.slice(-1);
+    const height = props.height ? `,h-${props.height}` : "";
+
     return {
-        src: `${page.site.image_cdn}/${props.filename}?tr=w-${sizes.slice(-1)}`,
-        sizes: `(max-width: ${sizes.slice(-1)}px) 100vw, ${sizes.slice(-1)}px`,
+        src: `${page.site.image_cdn}/${props.filename}?tr=w-${maxSize}${height}`,
+        sizes: `(max-width: ${maxSize}px) 100vw, ${maxSize}px`,
         srcset: sizes
             .map(
                 (s) =>
-                    `${page.site.image_cdn}/${props.filename}?tr=w-${s} ${s}w`
+                    `${page.site.image_cdn}/${props.filename}?tr=w-${s}${height} ${s}w`
             )
             .join(","),
     };
