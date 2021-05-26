@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -10,6 +10,7 @@
     <link rel="preload" href="/fonts/Bold.woff2" as="font" type="font/woff2" crossorigin>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width">
     <title>Trip.ee - {{ $title ?? '' }}</title>
+    <meta name="description" content="{{ config('site.description') }}">
 </head>
 
 <body class="min-h-screen font-sans antialiased text-gray-700">

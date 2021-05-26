@@ -50,7 +50,8 @@ watch(y, () => {
             >
                 <Image
                     :filename="content?.images?.[0].filename || ''"
-                    :narrow="true"
+                    width="md"
+                    :alt="content.title || ''"
                 />
                 <figcaption class="px-4 md:px-0">
                     {{ content.title }}

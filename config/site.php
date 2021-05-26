@@ -2,6 +2,8 @@
 
 return [
     "name" => "Trip.ee",
+    "description" =>
+        "'Trip.ee koondab kokku kõik reisimiseks vajaliku: reisijate kogemused ja reisisoovitused, reisiideed, odavad piletid, reisikaaslaste otsingu ja reisivarustuse ost ja müük'",
     "image_cdn" => env("IMAGE_CDN", ""),
     "links" => [
         "index" => ["title" => "Trip.ee", "route" => "frontpage.index"],
