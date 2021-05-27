@@ -10,6 +10,7 @@ const page =
     usePage<{
         contents: {
             data: Content[];
+            current_page: number;
             prev_page_url: string | null;
             next_page_url: string | null;
         };
@@ -17,11 +18,21 @@ const page =
 
 const { y } = useWindowScroll();
 const contents = ref(page.props.value.contents.data);
+const contentPages = ref({
+    [page.props.value.contents.current_page]: page.props.value.contents.data,
+});
+
+// watch(
+//     contentPages,
+//     () => {
+//         console.log(contentPages.value);
+//     },
+//     { immediate: true }
+// );
 
 watch(y, () => {
     let url = "";
     if (window.innerHeight + y.value >= document.body.scrollHeight) {
-        console.log(page.props.value.contents.next_page_url);
         if (page.props.value.contents.next_page_url) {
             Inertia.get(
                 page.props.value.contents.next_page_url,
@@ -32,13 +43,19 @@ watch(y, () => {
                     only: ["contents"],
                 }
             );
-            contents.value = uniqueCollection(
-                [...contents.value, ...page.props.value.contents.data],
-                "id"
-            ) as Content[];
+            contentPages.value[page.props.value.contents.current_page] =
+                page.props.value.contents.data;
+            // contents.value = uniqueCollection(
+            //     [...contents.value, ...page.props.value.contents.data],
+            //     "id"
+            // ) as Content[];
         }
     }
 });
+
+const index = ref(0);
+
+const onVisible = (i: number | null) => (index.value = i ?? index.value);
 </script>
 
 <template>
@@ -61,30 +78,17 @@ watch(y, () => {
             >
                 {{ __("Photos") }}
             </h1>
-            <div class="fixed top-0">{{ y }}</div>
+            <div class="fixed top-0 left-0">{{ index }}</div>
             <div
-                v-for="content in contents"
-                :key="content.id"
-                class="space-y-4"
+                v-for="(contents, index) in contentPages"
+                :key="index"
+                class="border border-red-500"
             >
-                <!-- <Image
-                    :filename="content?.images?.[0].filename || ''"
-                    width="md"
-                    :alt="content.title || ''"
-                /> -->
-                <div class="text-5xl">{{ content.id }}</div>
-                <figcaption class="px-4 md:px-0 text-base text-gray-600 mb-5">
-                    {{ content.title }}
-                </figcaption>
-                <div class="px-4 md:px-0 flex space-x-3 items-center">
-                    <IconUser class="w-8 h-8 text-gray-200" />
-                    <InertiaLink
-                        href=""
-                        class="text-sm font-medium text-cyan-500"
-                    >
-                        {{ content.user?.name }}
-                    </InertiaLink>
-                </div>
+                <PhotoGroup
+                    :contents="contents"
+                    :index="index"
+                    @indexVisible="onVisible"
+                />
             </div>
         </div>
     </div>
