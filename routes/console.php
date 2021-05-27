@@ -16,6 +16,20 @@ use Illuminate\Support\Facades\Artisan;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
+Artisan::command("migrate:db", function () {
+    // Schema::table("imageables", function (Blueprint $table) {
+    //     $table->id();
+    // });
+    Schema::table("viewables", function (Blueprint $table) {
+        $table->id();
+    });
+    Schema::table("poll_results", function (Blueprint $table) {
+        $table->id();
+    });
+});
 
 Artisan::command("migrate:models", function () {
     DB::table("imageables")
