@@ -11,7 +11,7 @@ class PhotoController extends Controller
             ->whereIn("type", ["photo"])
             ->where("status", 1)
             ->latest()
-            ->simplePaginate(5)
+            ->simplePaginate(4)
             ->withQueryString();
         //return response()->json($contents);
         return inertia("PhotoIndex", [

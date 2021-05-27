@@ -2,8 +2,9 @@
 import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-vue3";
-import type { Content } from "../types";
 import { useWindowScroll } from "@vueuse/core";
+import { uniqueCollection } from "../utils";
+import type { Content } from "../types";
 
 const page =
     usePage<{
@@ -18,7 +19,9 @@ const { y } = useWindowScroll();
 const contents = ref(page.props.value.contents.data);
 
 watch(y, () => {
+    let url = "";
     if (window.innerHeight + y.value >= document.body.scrollHeight) {
+        console.log(page.props.value.contents.next_page_url);
         if (page.props.value.contents.next_page_url) {
             Inertia.get(
                 page.props.value.contents.next_page_url,
@@ -29,10 +32,10 @@ watch(y, () => {
                     only: ["contents"],
                 }
             );
-            contents.value = [
-                ...contents.value,
-                ...page.props.value.contents.data,
-            ];
+            contents.value = uniqueCollection(
+                [...contents.value, ...page.props.value.contents.data],
+                "id"
+            ) as Content[];
         }
     }
 });
@@ -58,17 +61,19 @@ watch(y, () => {
             >
                 {{ __("Photos") }}
             </h1>
+            <div class="fixed top-0">{{ y }}</div>
             <div
                 v-for="content in contents"
                 :key="content.id"
                 class="space-y-4"
             >
-                <Image
+                <!-- <Image
                     :filename="content?.images?.[0].filename || ''"
                     width="md"
                     :alt="content.title || ''"
-                />
-                <figcaption class="px-4 md:px-0 text-base text-gray-600">
+                /> -->
+                <div class="text-5xl">{{ content.id }}</div>
+                <figcaption class="px-4 md:px-0 text-base text-gray-600 mb-5">
                     {{ content.title }}
                 </figcaption>
                 <div class="px-4 md:px-0 flex space-x-3 items-center">

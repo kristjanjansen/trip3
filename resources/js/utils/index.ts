@@ -104,30 +104,17 @@ export function sliceByKey(obj: object, key: string): object {
     }
 }
 
-/*
-
-    const isNumericWidth = props.width && typeof props.width === "number";
-    const width = isNumericWidth ? props.width : widths.slice(-1)[0];
-    const heightTransform = props.height ? `,h-${props.height}` : "";
-    const height = props.height
-        ? props.height <= 1
-            ? Math.floor(width * props.height)
-            : props.height
-        : "";
-    return {
-        src: `${page.site.image_cdn}/${props.filename}?tr=w-${width}${heightTransform}`,
-        sizes: !isNumericWidth
-            ? `(max-width: ${width}px) 100vw, ${width}px`
-            : "",
-        srcset: !isNumericWidth
-            ? widths
-                  .map(
-                      (s) =>
-                          `${page.site.image_cdn}/${props.filename}?tr=w-${s}${heightTransform} ${s}w`
-                  )
-                  .join(",")
-            : ,
-        width,
-        height,
-    };
-    */
+export function uniqueCollection(
+    arr: Record<string, any>,
+    key: string
+): Record<string, any> {
+    const result = [];
+    const map = new Map();
+    for (const item of arr.reverse()) {
+        if (!map.has(item[key])) {
+            map.set(item[key], true);
+            result.push(item);
+        }
+    }
+    return result.reverse();
+}
