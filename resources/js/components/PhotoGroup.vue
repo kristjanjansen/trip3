@@ -41,11 +41,7 @@ debouncedWatch(
         </figcaption>
         <div class="px-4 md:px-0 flex space-x-3 items-center">
             <IconUser class="w-8 h-8 text-gray-200" />
-            <InertiaLink
-                ref="indexRef"
-                href=""
-                class="text-sm font-medium text-cyan-500"
-            >
+            <InertiaLink href="" class="text-sm font-medium text-cyan-500">
                 {{ content.user?.name }}
             </InertiaLink>
         </div>
