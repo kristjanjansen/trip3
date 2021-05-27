@@ -97,24 +97,29 @@ const pageUrl = (newIndex: number, prevIndex: number | undefined) => {
 
 <template>
     <div class="max-w-screen-xl mx-auto">
-        <Nav />
+        <Nav class="sticky top-0" />
         <div class="h-12" />
+    </div>
+    <div>
+        <h1
+            class="
+                sticky
+                top-0
+                text-4xl
+                font-bold
+                tracking-tight
+                text-gray-700
+                lg:text-5xl
+                text-left
+                md:text-center
+                bg-white
+                py-6
+                shadow
+            "
+        >
+            {{ __("Photos") }}
+        </h1>
         <div class="max-w-screen-md mx-auto">
-            <h1
-                class="
-                    text-4xl
-                    font-bold
-                    tracking-tight
-                    text-gray-700
-                    lg:text-5xl
-                    text-left
-                    md:text-center
-                    px-4
-                    md:px-0
-                "
-            >
-                {{ __("Photos") }}
-            </h1>
             <div class="h-12" />
             <div
                 v-for="(contents, index) in contentPages"
