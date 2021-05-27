@@ -12,16 +12,16 @@ const topVisible = useElementVisibility(topRef);
 const bottomVisible = useElementVisibility(bottomRef);
 
 const emit =
-    defineEmit<(e: "indexVisible", index: number | null) => number | null>();
+    defineEmit<(e: "newIndex", index: number | null) => number | null>();
 
 debouncedWatch(
     [topVisible, bottomVisible],
     () => {
         if (topVisible.value) {
-            emit("indexVisible", props.index);
+            emit("newIndex", props.index);
         }
         if (bottomVisible.value) {
-            emit("indexVisible", props.index + 1);
+            emit("newIndex", props.index + 1);
         }
     },
     { debounce: 100, immediate: true }

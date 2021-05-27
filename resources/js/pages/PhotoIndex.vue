@@ -42,21 +42,21 @@ watch(
 
 // Ref to track the next / prev page index to load
 
-const index = ref(page.props.value.contents.current_page);
+const newIndex = ref(page.props.value.contents.current_page);
 
 // Emit handler invoked by the PhotoGroup component,
 // indicating the new page index to load
 
-const onVisible = (i: number) => {
-    index.value = i;
+const onNewIndex = (i: number) => {
+    newIndex.value = i;
 };
 
 // When new page index changes, fetch the new data
 
 watch(
-    () => index.value,
-    (newIndex, prevIndex) => {
-        const url = pageUrl(newIndex, prevIndex);
+    () => newIndex.value,
+    (newNewIndex, prevNewIndex) => {
+        const url = pageUrl(newNewIndex, prevNewIndex);
         if (url) {
             Inertia.get(
                 url,
@@ -124,7 +124,7 @@ const pageUrl = (newIndex: number, prevIndex: number | undefined) => {
                 <PhotoGroup
                     :contents="contents"
                     :index="parseInt(String(index))"
-                    @indexVisible="onVisible"
+                    @newIndex="onNewIndex"
                 />
             </div>
         </div>
