@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-vue3";
 import type { Content } from "../types";
@@ -93,44 +93,78 @@ const pageUrl = (newIndex: number, prevIndex: number | undefined) => {
     }
     return null;
 };
+
+import { useWindowScroll } from "@vueuse/core";
+const { y } = useWindowScroll();
+const isSticky = computed(() => y.value >= 120);
 </script>
 
 <template>
-    <div class="max-w-screen-xl mx-auto">
-        <Nav class="sticky top-0" />
-        <div class="h-12" />
-    </div>
     <div>
-        <h1
-            class="
-                sticky
-                top-0
-                text-4xl
-                font-bold
-                tracking-tight
-                text-gray-700
-                lg:text-5xl
-                text-left
-                md:text-center
-                bg-white
-                py-6
-                shadow
-            "
-        >
-            {{ __("Photos") }}
-        </h1>
-        <div class="max-w-screen-md mx-auto">
+        <div class="max-w-screen-xl mx-auto">
+            <Nav />
             <div class="h-12" />
+        </div>
+        <div>
             <div
-                v-for="(contents, index) in contentPages"
-                :key="index"
-                class="space-y-12"
+                class="sticky top-0 bg-white flex justify-between items-center"
+                :class="[isSticky ? 'shadow' : '']"
             >
-                <PhotoGroup
-                    :contents="contents"
-                    :index="parseInt(String(index))"
-                    @newIndex="onNewIndex"
+                <Logo
+                    class="w-[200px] h-[100px] opacity-0 transition"
+                    :class="[isSticky ? 'opacity-100' : '']"
                 />
+                <InertiaLink :href="route('photo.index')">
+                    <h1
+                        class="
+                            text-4xl
+                            font-bold
+                            tracking-tight
+                            text-gray-700
+                            lg:text-5xl
+                            transition
+                            transform
+                            scale-100
+                            text-center
+                        "
+                        :class="[isSticky ? 'scale-75' : '']"
+                    >
+                        {{ __("Photos") }}
+                    </h1>
+                </InertiaLink>
+                <div
+                    class="
+                        w-[200px]
+                        flex
+                        justify-end
+                        pr-6
+                        opacity-0
+                        transition
+                        duration-100
+                    "
+                    :class="[isSticky ? 'opacity-100' : '']"
+                >
+                    <Button class="hidden md:block">{{
+                        __("Add image")
+                    }}</Button>
+                    <Button class="block md:hidden">{{ __("Add") }}</Button>
+                </div>
+            </div>
+            <div class="max-w-screen-md mx-auto">
+                <div class="p-12 pt-0 flex justify-center">
+                    <Button>{{ __("Add image") }}</Button>
+                </div>
+                <div
+                    v-for="(contents, index) in contentPages"
+                    :key="index"
+                    class="space-y-12"
+                >
+                    <PhotoGroup
+                        :contents="contents"
+                        :index="parseInt(String(index))"
+                        @newIndex="onNewIndex"
+                    />
+                </div>
             </div>
         </div>
     </div>

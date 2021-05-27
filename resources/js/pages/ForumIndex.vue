@@ -46,6 +46,7 @@ debouncedWatch(
                     name="q"
                     v-model="q"
                     :placeholder="__('Search the forums')"
+                    autofocus
                 />
                 <div class="h-2" />
                 <TransitionGroupFade>
