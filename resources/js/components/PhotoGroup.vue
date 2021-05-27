@@ -3,31 +3,39 @@ import { defineEmit, defineProps, ref } from "vue";
 import type { Content } from "../types";
 import { useElementVisibility, debouncedWatch } from "@vueuse/core";
 
-const props = defineProps<{ contents: Content[]; index: any }>();
+const props = defineProps<{ contents: Content[]; index: number }>();
 
-const indexRef = ref(null);
-const indexVisible = useElementVisibility(indexRef);
+const topRef = ref(null);
+const bottomRef = ref(null);
+
+const topVisible = useElementVisibility(topRef);
+const bottomVisible = useElementVisibility(bottomRef);
 
 const emit =
     defineEmit<(e: "indexVisible", index: number | null) => number | null>();
 
 debouncedWatch(
-    indexVisible,
+    [topVisible, bottomVisible],
     () => {
-        emit("indexVisible", indexVisible.value ? parseInt(props.index) : null);
+        if (topVisible.value) {
+            emit("indexVisible", props.index);
+        }
+        if (bottomVisible.value) {
+            emit("indexVisible", props.index + 1);
+        }
     },
-    { debounce: 500 }
+    { debounce: 100, immediate: true }
 );
 </script>
 
 <template>
-    <div v-for="content in contents" :key="content.id" class="space-y-4">
-        <!-- <Image
-                    :filename="content?.images?.[0].filename || ''"
-                    width="md"
-                    :alt="content.title || ''"
-                /> -->
-        <div class="text-5xl">{{ content.id }}</div>
+    <div v-for="(content, i) in contents" :key="content.id" class="space-y-4">
+        <div v-if="i === 2" ref="topRef"></div>
+        <Image
+            :filename="content?.images?.[0].filename || ''"
+            width="md"
+            :alt="content.title || ''"
+        />
         <figcaption class="px-4 md:px-0 text-base text-gray-600 mb-5">
             {{ content.title }}
         </figcaption>
@@ -41,6 +49,6 @@ debouncedWatch(
                 {{ content.user?.name }}
             </InertiaLink>
         </div>
+        <div v-if="i === contents.length - 3" ref="bottomRef"></div>
     </div>
-    <div ref="indexRef" class="bg-orange-500 p-6">{{ index }}</div>
 </template>

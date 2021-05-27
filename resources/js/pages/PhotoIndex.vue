@@ -2,8 +2,6 @@
 import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-vue3";
-import { useWindowScroll } from "@vueuse/core";
-import { uniqueCollection } from "../utils";
 import type { Content } from "../types";
 
 const page =
@@ -11,31 +9,57 @@ const page =
         contents: {
             data: Content[];
             current_page: number;
+            first_page_url: string | null;
             prev_page_url: string | null;
             next_page_url: string | null;
         };
     }>();
 
-const { y } = useWindowScroll();
-const contents = ref(page.props.value.contents.data);
+// Getting intial content: we chunk the Content[] into pages, indexed with a page number:
+
+// contentPages.value = {
+//    1: Content[],
+//    ...
+// }
+
 const contentPages = ref({
     [page.props.value.contents.current_page]: page.props.value.contents.data,
 });
 
-// watch(
-//     contentPages,
-//     () => {
-//         console.log(contentPages.value);
-//     },
-//     { immediate: true }
-// );
+// Watch when Inertia fetches data for a new content page and insert it to
+// the contentPages
 
-watch(y, () => {
-    let url = "";
-    if (window.innerHeight + y.value >= document.body.scrollHeight) {
-        if (page.props.value.contents.next_page_url) {
+watch(
+    () => page.props.value.contents,
+    () => {
+        if (page.props.value.contents) {
+            contentPages.value[page.props.value.contents.current_page] =
+                page.props.value.contents.data;
+        }
+    },
+    { immediate: true }
+);
+
+// Ref to track the next / prev page index to load
+
+const index = ref(page.props.value.contents.current_page);
+
+// Emit handler invoked by the PhotoGroup component,
+// indicating the new page index to load
+
+const onVisible = (i: number) => {
+    index.value = i;
+};
+
+// When new page index changes, fetch the new data
+
+watch(
+    () => index.value,
+    (newIndex, prevIndex) => {
+        const url = pageUrl(newIndex, prevIndex);
+        if (url) {
             Inertia.get(
-                page.props.value.contents.next_page_url,
+                url,
                 {},
                 {
                     preserveScroll: true,
@@ -43,26 +67,39 @@ watch(y, () => {
                     only: ["contents"],
                 }
             );
-            contentPages.value[page.props.value.contents.current_page] =
-                page.props.value.contents.data;
-            // contents.value = uniqueCollection(
-            //     [...contents.value, ...page.props.value.contents.data],
-            //     "id"
-            // ) as Content[];
         }
     }
-});
+);
 
-const index = ref(0);
+// Handle edge case: we reload the page with the ?page= parameter
+// is greater than 1
 
-const onVisible = (i: number | null) => (index.value = i ?? index.value);
+if (
+    page.props.value.contents.current_page > 1 &&
+    page.props.value.contents.first_page_url
+) {
+    Inertia.get(page.props.value.contents.first_page_url);
+}
+
+// Helper function to get the Inertia page url
+
+const pageUrl = (newIndex: number, prevIndex: number | undefined) => {
+    const isNext = newIndex > (prevIndex || 0);
+    if (isNext && page.props.value.contents.next_page_url) {
+        return page.props.value.contents.next_page_url;
+    }
+    if (!isNext && page.props.value.contents.prev_page_url) {
+        return page.props.value.contents.prev_page_url;
+    }
+    return null;
+};
 </script>
 
 <template>
     <div class="max-w-screen-xl mx-auto">
         <Nav />
         <div class="h-12" />
-        <div class="space-y-16 max-w-screen-md mx-auto">
+        <div class="max-w-screen-md mx-auto">
             <h1
                 class="
                     text-4xl
@@ -78,15 +115,15 @@ const onVisible = (i: number | null) => (index.value = i ?? index.value);
             >
                 {{ __("Photos") }}
             </h1>
-            <div class="fixed top-0 left-0">{{ index }}</div>
+            <div class="h-12" />
             <div
                 v-for="(contents, index) in contentPages"
                 :key="index"
-                class="border border-red-500"
+                class="space-y-12"
             >
                 <PhotoGroup
                     :contents="contents"
-                    :index="index"
+                    :index="parseInt(String(index))"
                     @indexVisible="onVisible"
                 />
             </div>
