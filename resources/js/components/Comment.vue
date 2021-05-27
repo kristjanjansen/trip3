@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { defineProps, ref } from "vue";
 import type { Comment } from "../types";
+import { useFormatAgo } from "../utils";
 
-defineProps<{ comment: Comment }>();
+const props = defineProps<{ comment: Comment }>();
 
 const editing = ref(false);
+const ago = useFormatAgo(props.comment.created_at);
 </script>
 
 <template>
@@ -27,7 +29,10 @@ const editing = ref(false);
                     {{ comment.user?.name }}
                 </InertiaLink>
                 <div class="text-sm font-medium text-gray-300">
-                    {{ comment.created_at }}
+                    {{ ago }}
+                </div>
+                <div class="text-sm font-medium text-gray-300">
+                    {{ formatDate(comment?.created_at) }}
                 </div>
                 <button
                     class="text-sm font-medium text-green-500"
@@ -38,7 +43,7 @@ const editing = ref(false);
             </div>
             <div
                 class="prose prose-blue max-w-none"
-                v-html="comment.body"
+                v-html="formatContent(comment.body)"
             ></div>
         </div>
         <CommentEditForm

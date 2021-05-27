@@ -1,4 +1,4 @@
-import type { ComputedRef } from "vue";
+import { computed, ComputedRef } from "vue";
 import { usePage } from "@inertiajs/inertia-vue3";
 import { get } from "lodash-es";
 import marked from "marked";
@@ -22,13 +22,17 @@ export function trans(
     return translation ? replaceTokens(translation, tokens) : lookup;
 }
 
+// @TODO trans_choice()
+// https://pineco.de/using-laravels-localization-js/
+
 export function __(key: string, tokens: Record<string, any> = {}): string {
     const page = usePage<{ translations_json: any }>().props.value;
     return replaceTokens(page.translations_json[key] || key, tokens);
 }
 
-export function formatContent(str: string = ""): string {
-    return marked(str, { breaks: true });
+export function formatContent(str: string | null): string {
+    const cleanedStr = str?.replace(/\[\[.*]\]/gm, "");
+    return marked(cleanedStr || "", { breaks: true });
 }
 
 /*
@@ -51,10 +55,12 @@ function format_date($date)
 // @TODO: handle current year
 
 export function formatDate(date: string | Date | null): string {
-    return format(new Date(date || new Date()), "d. LLL Y H:mm", {
+    return format(new Date(date || new Date()), "d. LLL Y HH:mm", {
         locale: et,
     });
 }
+
+// @TODO trans()
 
 const messages: TimeAgoMessages = {
     justNow: "just praegu",
@@ -87,4 +93,28 @@ const messages: TimeAgoMessages = {
 
 export function useFormatAgo(str: string | null) {
     return useTimeAgo(str || new Date(), { messages });
+}
+
+export function sliceByKey(obj: object, key: string): object {
+    if (Object.keys(obj).includes(key)) {
+        const i = Object.keys(obj).findIndex((k) => k === key);
+        return Object.fromEntries(Object.entries(obj).slice(0, i + 1));
+    } else {
+        return obj;
+    }
+}
+
+export function uniqueCollection(
+    arr: Record<string, any>,
+    key: string
+): Record<string, any> {
+    const result = [];
+    const map = new Map();
+    for (const item of arr.reverse()) {
+        if (!map.has(item[key])) {
+            map.set(item[key], true);
+            result.push(item);
+        }
+    }
+    return result.reverse();
 }

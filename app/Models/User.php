@@ -11,7 +11,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $appends = ["first_name", "names"];
     /**
      * The attributes that are mass assignable.
      *
@@ -24,16 +23,17 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ["password", "remember_token"];
+    // protected $hidden = ["password", "remember_token"];
+    protected $hidden = ["password"];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-        "email_verified_at" => "datetime",
-    ];
+    // protected $casts = [
+    //     "email_verified_at" => "datetime",
+    // ];
 
     /**
      * @return Illuminate\Database\Eloquent\Relations\HasMany
@@ -42,7 +42,6 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\Content");
     }
-
     /**
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -50,20 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\Comment");
     }
-
     /**
-     * @return string
+     * @return Illuminate\Database\Eloquent\Relations\MorphToMany
      */
-    public function getFirstNameAttribute()
+    public function images()
     {
-        return explode(" ", $this->name)[0];
-    }
-
-    /**
-     * @return array
-     */
-    public function getNamesAttribute()
-    {
-        return explode(" ", $this->name);
+        return $this->morphToMany("App\Models\Image", "imageable");
     }
 }

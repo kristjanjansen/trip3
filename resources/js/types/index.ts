@@ -1,5 +1,5 @@
 import router from "ziggy-js";
-import { trans, __, formatContent, formatDate, formatAgo } from "../utils";
+import { trans, __, formatContent, formatDate } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {
@@ -21,6 +21,7 @@ declare module "vue" {
         CommentEditForm: typeof import("../components/CommentEditForm.vue").default;
         Comments: typeof import("../components/Comments.vue").default;
         FieldLayout: typeof import("../components/FieldLayout.vue").default;
+        FlightCard: typeof import("../components/FlightCard.vue").default;
         Footer: typeof import("../components/Footer.vue").default;
         FormTextarea: typeof import("../components/FormTextarea.vue").default;
         FormTextfield: typeof import("../components/FormTextfield.vue").default;
@@ -38,6 +39,7 @@ declare module "vue" {
         IconThumbsup: typeof import("../components/IconThumbsup.vue").default;
         IconTwitter: typeof import("../components/IconTwitter.vue").default;
         IconUser: typeof import("../components/IconUser.vue").default;
+        Image: typeof import("../components/Image.vue").default;
         Logo: typeof import("../components/Logo.vue").default;
         LogoPlain: typeof import("../components/LogoPlain.vue").default;
         Nav: typeof import("../components/Nav.vue").default;
@@ -54,6 +56,7 @@ export type Comment = {
     user_id: number;
     content_id: number;
     body: string | null;
+    status: boolean;
     created_at: string /* Date */ | null;
     updated_at: string /* Date */ | null;
     content?: Content | null;
@@ -66,21 +69,55 @@ export type Content = {
     title: string | null;
     body: string | null;
     type: string;
+    url: string | null;
+    status: boolean;
     created_at: string /* Date */ | null;
     updated_at: string /* Date */ | null;
+    start_at: string /* Date */ | null;
+    end_at: string /* Date */ | null;
+    duration: string | null;
+    price: number | null;
+    slug: string;
     user?: User | null;
     comments?: Comment[] | null;
+    images?: Image[] | null;
+};
+
+export type Image = {
+    id: number;
+    filename: string;
+    created_at: string /* Date */ | null;
+    updated_at: string /* Date */ | null;
+    content?: Content[] | null;
+    user?: User[] | null;
 };
 
 export type User = {
     id: number;
     name: string;
     email: string;
-    email_verified_at: string /* Date */;
+    contact_facebook: string | null;
+    contact_twitter: string | null;
+    contact_instagram: string | null;
+    contact_homepage: string | null;
+    profile_color: string;
+    real_name: string;
+    real_name_show: boolean;
+    gender: number | null;
+    birthyear: number | null;
+    description: string | null;
+    notify_message: boolean;
+    notify_follow: boolean;
+    role: string;
+    rank: number;
+    verified: boolean;
+    registration_token: string | null;
+    remember_token: string | null;
     created_at: string /* Date */ | null;
     updated_at: string /* Date */ | null;
+    active_at: string /* Date */ | null;
+    company: boolean;
     contents?: Content[] | null;
     comments?: Comment[] | null;
-    first_name?: string;
-    names?: any[];
+    images?: Image[] | null;
 };

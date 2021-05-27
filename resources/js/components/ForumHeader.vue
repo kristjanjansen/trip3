@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { usePage } from "@inertiajs/inertia-vue3";
 
-const page = usePage<{ links: any }>().props.value;
+const page = usePage<{ site: any }>().props.value;
 </script>
 
 <template>
-    <div class="relative p-6 pb-0 overflow-hidden bg-gray-100 lg:px-0 lg:pt-10">
-        <!-- <background-map
-            class="w-[1000px] my-[-260px] absolute inset-0 opacity-5 pointer-events-none"
-        /> -->
-        <div class="container inset-0 grid gap-6 lg:mx-auto">
-            <div class="h-6">
-                <transition name="fade"><Nav /></transition>
-            </div>
+    <header class="bg-gray-100 relative overflow-hidden">
+        <div class="max-w-screen-xl mx-auto">
+            <Nav />
+        </div>
+        <div class="max-w-screen-lg mx-auto p-6 pb-0">
             <div class="h-6" />
             <h1
                 class="
@@ -25,24 +22,29 @@ const page = usePage<{ links: any }>().props.value;
             >
                 {{ __("Forum") }}
             </h1>
+            <div class="h-6" />
             <div class="flex overflow-x-scroll lg:overscroll-auto">
                 <InertiaLink
-                    v-for="(link, i) in page.links.footerSecond"
+                    v-for="(link, i) in page.site.links.footerSecond"
                     :key="link"
                     class="
                         px-5
                         py-3
                         font-bold
                         text-gray-500
+                        hover:text-gray-600
                         whitespace-nowrap
                         text-md
                     "
-                    :class="{ 'bg-white text-gray-800': i === 0 }"
+                    :class="{
+                        'bg-white text-gray-800 hover:text-gray-900':
+                            route().current() === link.route,
+                    }"
                     :href="route(link.route)"
                 >
-                    {{ link.title }}
+                    {{ __(link.title) }}
                 </InertiaLink>
             </div>
         </div>
-    </div>
+    </header>
 </template>

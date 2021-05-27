@@ -15,6 +15,33 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
+Artisan::command("migrate:db", function () {
+    // Schema::table("imageables", function (Blueprint $table) {
+    //     $table->id();
+    // });
+    Schema::table("viewables", function (Blueprint $table) {
+        $table->id();
+    });
+    Schema::table("poll_results", function (Blueprint $table) {
+        $table->id();
+    });
+});
+
+Artisan::command("migrate:models", function () {
+    DB::table("imageables")
+        ->where("imageable_type", "App\Models\Content")
+        ->update(["imageable_type" => "App\Models\Content"]);
+    DB::table("imageables")
+        ->where("imageable_type", "App\Models\User")
+        ->update(["imageable_type" => "App\Models\User"]);
+    DB::table("viewables")
+        ->where("viewable_type", "App\Models\Content")
+        ->update(["viewable_type" => "App\Models\Content"]);
+});
 
 Artisan::command("generate:types", function () {
     $this->call("types:generate");
@@ -48,7 +75,7 @@ Artisan::command("generate:types", function () {
 
     $template = <<<END
 import router from "ziggy-js";
-import { trans, __, formatContent, formatDate, formatAgo } from "../utils";
+import { trans, __, formatContent, formatDate } from "../utils";
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 declare module "vue" {

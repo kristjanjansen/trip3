@@ -18,7 +18,7 @@ const onSubmit = () => {
         {
             preserveScroll: true,
             onSuccess: () => {
-                Inertia.visit(route("forum.show", props.comment.content_id), {
+                Inertia.get(route("forum.show", props.comment.content_id), {
                     preserveScroll: true,
                     only: ["content"],
                 });

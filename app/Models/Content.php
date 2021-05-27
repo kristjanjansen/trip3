@@ -27,4 +27,11 @@ class Content extends Model
     {
         return $this->hasMany("App\Models\Comment");
     }
+    /**
+     * @return Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function images()
+    {
+        return $this->morphToMany("App\Models\Image", "imageable");
+    }
 }

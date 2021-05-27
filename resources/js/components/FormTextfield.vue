@@ -9,6 +9,7 @@ const props =
         modelValue: string;
         placeholder?: string;
         errors?: Record<string, string>;
+        autofocus?: boolean;
     }>();
 const value = useVModel(props);
 </script>
@@ -23,6 +24,7 @@ const value = useVModel(props);
             autocapitalize="none"
             autocorrect="off"
             spellcheck="false"
+            :autofocus="autofocus"
         />
     </FieldLayout>
 </template>

@@ -2,16 +2,46 @@
 
 namespace App\Http\Controllers;
 use App\Models\Content;
+use GuzzleHttp\Psr7\Request;
 
 class ForumController extends Controller
 {
-    public function index()
+    public function indexGeneral()
     {
+        return $this->index("forum");
+    }
+
+    public function indexBuysell()
+    {
+        return $this->index("buysell");
+    }
+
+    public function indexExpat()
+    {
+        return $this->index("expat");
+    }
+
+    public function indexMisc()
+    {
+        return $this->index("misc");
+    }
+
+    public function index($type)
+    {
+        $q = request()->get("q");
+
         $contents = Content::with(["user", "comments"])
+            ->where("type", $type)
+            ->when($q, function ($query, $q) {
+                return $query
+                    ->where("title", "LIKE", "%" . $q . "%")
+                    ->orWhere("body", "LIKE", "%" . $q . "%");
+            })
+            ->where("status", 1)
             ->latest()
             ->simplePaginate(15)
             ->withQueryString();
-        //return response()->json($contents);
+
         return inertia("ForumIndex", [
             "contents" => $contents,
         ])->withViewData([

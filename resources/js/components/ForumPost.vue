@@ -17,7 +17,7 @@ defineProps<{ content: Content }>();
             </h1>
             <div
                 class="prose lg:prose-lg max-w-none prose-blue"
-                v-html="content.body"
+                v-html="formatContent(content.body)"
             ></div>
         </div>
     </ForumLayout>

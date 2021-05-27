@@ -39,7 +39,7 @@ const ago = useFormatAgo(props.content.created_at || "");
             >
                 <div class="text-base text-gray-500">{{ __("Postitas") }}</div>
                 <div class="text-base font-medium text-cyan-500">
-                    {{ content.user?.first_name }}
+                    {{ content.user?.name }}
                 </div>
                 <div class="text-base text-gray-500">
                     {{ ago }}
