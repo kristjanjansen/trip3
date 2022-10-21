@@ -2,7 +2,7 @@
 
 ## About
 
-Trip.ee UI rewrite with Vite, Inertia and Vue. See more at https://github.com/tripikad/trip2/issues/1970
+Trip.ee UI rewrite with Vue, Vite, Inertia and Tailwind. See more at https://github.com/tripikad/trip2/issues/1970
 
 ## Demo
 
